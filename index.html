@@ -21,6 +21,305 @@
             font-size: 16px;
         }
 
+        /* Navigation Bar Styles */
+        .ptn-navbar-wrapper * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .ptn-navbar-wrapper {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 16px;
+        }
+
+        .ptn-navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 70px;
+            gap: 20px;
+        }
+
+        /* Logo Section */
+        .ptn-logo-section {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            min-width: 180px;
+            z-index: 1002;
+        }
+
+        .ptn-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            color: #1E40AF;
+            transition: opacity 0.3s ease;
+            min-width: 0;
+        }
+
+        .ptn-logo:hover {
+            opacity: 0.8;
+        }
+
+        .ptn-logo img {
+            height: 40px;
+            width: auto;
+            flex-shrink: 0;
+        }
+
+        .ptn-logo-text {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 24px;
+            font-weight: 900;
+            white-space: nowrap;
+            overflow: visible;
+            text-overflow: clip;
+            flex-shrink: 0;
+        }
+
+        .ptn-logo-prime {
+            color: #1E40AF;
+        }
+
+        .ptn-logo-media {
+            color: #F97316;
+        }
+
+        /* Navigation Menu */
+        .ptn-nav-menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            flex: 1;
+            justify-content: center;
+            max-width: 600px;
+            margin: 0 auto;
+            gap: clamp(8px, 2vw, 20px);
+            position: relative;
+            z-index: 1001;
+        }
+
+        .ptn-nav-item {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .ptn-nav-link {
+            color: #4B5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 8px 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .ptn-nav-link:hover {
+            color: #1E40AF;
+            background-color: rgba(30, 64, 175, 0.05);
+        }
+
+        .ptn-nav-link.active {
+            color: #1E40AF;
+        }
+
+        /* Dropdown Arrow */
+        .ptn-dropdown-arrow {
+            font-size: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .ptn-nav-item:hover .ptn-dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Menu */
+        .ptn-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #E5E7EB;
+            padding: 8px;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            z-index: 1003;
+        }
+
+        .ptn-nav-item:hover .ptn-dropdown {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 5px;
+        }
+
+        .ptn-dropdown-item {
+            display: block;
+            padding: 12px 16px;
+            color: #4B5563;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .ptn-dropdown-item:hover {
+            background: #F9FAFB;
+            color: #1E40AF;
+        }
+
+        /* Right Section */
+        .ptn-nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-shrink: 0;
+            min-width: 120px;
+            z-index: 1002;
+        }
+
+        /* Auth Buttons */
+        .ptn-auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .ptn-btn-primary {
+            background: #F97316;
+            color: white;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(249, 115, 22, 0.25);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            white-space: nowrap;
+        }
+
+        .ptn-btn-primary:hover {
+            background: #EA580C;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(249, 115, 22, 0.35);
+        }
+
+        /* Mobile Menu Toggle */
+        .ptn-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            flex-shrink: 0;
+        }
+
+        .ptn-hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .ptn-hamburger span {
+            width: 24px;
+            height: 2px;
+            background: #4B5563;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .ptn-mobile-toggle.active .ptn-hamburger span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .ptn-mobile-toggle.active .ptn-hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .ptn-mobile-toggle.active .ptn-hamburger span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Mobile Menu */
+        .ptn-mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 24px;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+
+        .ptn-mobile-menu.active {
+            display: block;
+        }
+
+        .ptn-mobile-nav {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .ptn-mobile-nav-item {
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        .ptn-mobile-nav-link {
+            display: block;
+            padding: 16px 0;
+            color: #4B5563;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .ptn-mobile-nav-link:hover {
+            color: #1E40AF;
+        }
+
+        .ptn-mobile-dropdown {
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+
+        .ptn-mobile-dropdown .ptn-dropdown-item {
+            padding: 12px 0;
+            font-size: 14px;
+        }
+
         /* Enhanced Animations */
         @keyframes slideInRight {
             from { transform: translateX(100px); opacity: 0; }
@@ -71,6 +370,27 @@
             50% { transform: scale(1.2) rotate(-5deg); }
             75% { transform: scale(1.1) rotate(5deg); }
             100% { transform: scale(1) rotate(0deg); }
+        }
+
+        @keyframes criticalPulse {
+            0%, 100% { 
+                border-color: #EF4444;
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+            }
+            50% { 
+                border-color: #DC143C;
+                box-shadow: 0 0 0 15px rgba(239, 68, 68, 0);
+            }
+        }
+        
+        @keyframes lockPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
+            50% { box-shadow: 0 8px 24px rgba(16, 185, 129, 0.6); }
         }
 
         .animate-slide-in {
@@ -196,27 +516,6 @@
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
             animation: lockPulse 2s ease-in-out infinite;
         }
-        
-        @keyframes criticalPulse {
-            0%, 100% { 
-                border-color: #EF4444;
-                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
-            }
-            50% { 
-                border-color: #DC143C;
-                box-shadow: 0 0 0 15px rgba(239, 68, 68, 0);
-            }
-        }
-        
-        @keyframes lockPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        @keyframes glowPulse {
-            0%, 100% { box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
-            50% { box-shadow: 0 8px 24px rgba(16, 185, 129, 0.6); }
-        }
 
         /* Container with Enhanced Spacing */
         .yta-container {
@@ -227,7 +526,7 @@
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
-            padding-top: 80px;
+            padding-top: 40px;
             padding-bottom: 160px;
         }
 
@@ -1319,32 +1618,26 @@
         }
 
         /* Mobile Responsive Enhancements */
+        @media (max-width: 1100px) {
+            .ptn-nav-menu {
+                display: none;
+            }
+            
+            .ptn-mobile-toggle {
+                display: block;
+            }
+        }
+
         @media (max-width: 768px) {
             .yta-container {
                 padding: 24px 20px;
-                padding-top: 60px;
+                padding-top: 20px;
                 padding-bottom: 120px;
             }
             
             /* Hide all popups on mobile to prevent covering content */
             .popup-container {
                 display: none !important;
-            }
-            
-            /* Make home button mobile friendly */
-            #homeButton {
-                top: 10px !important;
-                left: 10px !important;
-                z-index: 1300 !important;
-            }
-            
-            #homeButton a {
-                padding: 8px 16px !important;
-                font-size: 12px !important;
-            }
-            
-            #homeButton span:first-child {
-                font-size: 20px !important;
             }
             
             .content-grid {
@@ -1479,6 +1772,137 @@
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <div class="ptn-navbar-wrapper">
+        <nav class="ptn-navbar">
+            <!-- Logo Section -->
+            <div class="ptn-logo-section">
+                <a href="https://primetime.media" class="ptn-logo">
+                    <div class="ptn-logo-text">
+                        <span class="ptn-logo-prime">PrimeTime</span>
+                        <span class="ptn-logo-media">Media</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <ul class="ptn-nav-menu">
+                <li class="ptn-nav-item">
+                    <a href="/" class="ptn-nav-link">Home</a>
+                </li>
+                <li class="ptn-nav-item">
+                    <a href="https://dashboard.primetime.media" class="ptn-nav-link active">Revenue Calculator</a>
+                </li>
+                <li class="ptn-nav-item">
+                    <a href="/blog" class="ptn-nav-link">Blog</a>
+                </li>
+                <li class="ptn-nav-item">
+                    <a href="/faq1" class="ptn-nav-link">FAQ</a>
+                </li>
+                <li class="ptn-nav-item">
+                    <a href="/pricing1" class="ptn-nav-link">Pricing</a>
+                </li>
+                <li class="ptn-nav-item">
+                    <a href="/about-1" class="ptn-nav-link">About</a>
+                </li>
+                <li class="ptn-nav-item">
+                    <a href="/compare1" class="ptn-nav-link">Compare Us</a>
+                </li>
+                <li class="ptn-nav-item">
+                    <a href="/contact1" class="ptn-nav-link">Contact</a>
+                </li>
+                <li class="ptn-nav-item">
+                    <a href="#" class="ptn-nav-link">
+                        Legal
+                        <span class="ptn-dropdown-arrow">▼</span>
+                    </a>
+                    <div class="ptn-dropdown">
+                        <a href="/privacy-policy" class="ptn-dropdown-item">Privacy Policy</a>
+                        <a href="/terms-of-use" class="ptn-dropdown-item">Terms of Use</a>
+                        <a href="/terms-of-service" class="ptn-dropdown-item">Terms of Service</a>
+                        <a href="/earnings-disclaimer" class="ptn-dropdown-item">Earnings Disclaimer</a>
+                        <a href="/cookie-policy" class="ptn-dropdown-item">Cookie Policy</a>
+                        <a href="/anti-spam" class="ptn-dropdown-item">Anti-Spam</a>
+                        <a href="/security-and-data-protection" class="ptn-dropdown-item">Security & Data Policy</a>
+                        <a href="/data-processing-agreement" class="ptn-dropdown-item">Data Processing Agreement</a>
+                        <a href="/subprocessor-list" class="ptn-dropdown-item">Subprocessor List</a>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- Right Section -->
+            <div class="ptn-nav-right">
+                <!-- Auth Buttons -->
+                <div class="ptn-auth-buttons">
+                    <a href="/beta-1" class="ptn-btn-primary">
+                        Sign Up
+                        <span style="font-size: 16px;">→</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="ptn-mobile-toggle" onclick="toggleMobileMenu()">
+                    <div class="ptn-hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div class="ptn-mobile-menu" id="ptnMobileMenu">
+            <ul class="ptn-mobile-nav">
+                <li class="ptn-mobile-nav-item">
+                    <a href="/" class="ptn-mobile-nav-link">Home</a>
+                </li>
+                <li class="ptn-mobile-nav-item">
+                    <a href="https://dashboard.primetime.media" class="ptn-mobile-nav-link">Revenue Calculator</a>
+                </li>
+                <li class="ptn-mobile-nav-item">
+                    <a href="/blog" class="ptn-mobile-nav-link">Blog</a>
+                </li>
+                <li class="ptn-mobile-nav-item">
+                    <a href="/faq1" class="ptn-mobile-nav-link">FAQ</a>
+                </li>
+                <li class="ptn-mobile-nav-item">
+                    <a href="/pricing1" class="ptn-mobile-nav-link">Pricing</a>
+                </li>
+                <li class="ptn-mobile-nav-item">
+                    <a href="/about-1" class="ptn-mobile-nav-link">About</a>
+                </li>
+                <li class="ptn-mobile-nav-item">
+                    <a href="/compare1" class="ptn-mobile-nav-link">Compare Us</a>
+                </li>
+                <li class="ptn-mobile-nav-item">
+                    <a href="/contact1" class="ptn-mobile-nav-link">Contact</a>
+                </li>
+                <li class="ptn-mobile-nav-item">
+                    <a href="#" class="ptn-mobile-nav-link">Legal</a>
+                    <div class="ptn-mobile-dropdown">
+                        <a href="/privacy-policy" class="ptn-dropdown-item">Privacy Policy</a>
+                        <a href="/terms-of-use" class="ptn-dropdown-item">Terms of Use</a>
+                        <a href="/terms-of-service" class="ptn-dropdown-item">Terms of Service</a>
+                        <a href="/earnings-disclaimer" class="ptn-dropdown-item">Earnings Disclaimer</a>
+                        <a href="/cookie-policy" class="ptn-dropdown-item">Cookie Policy</a>
+                        <a href="/anti-spam" class="ptn-dropdown-item">Anti-Spam</a>
+                        <a href="/security-and-data-protection" class="ptn-dropdown-item">Security & Data Policy</a>
+                        <a href="/data-processing-agreement" class="ptn-dropdown-item">Data Processing Agreement</a>
+                        <a href="/subprocessor-list" class="ptn-dropdown-item">Subprocessor List</a>
+                    </div>
+                </li>
+            </ul>
+            
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <a href="/beta-1" class="ptn-btn-primary" style="width: 100%; justify-content: center;">
+                    Sign Up
+                    <span style="font-size: 16px;">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div class="yta-container">
         <!-- Enhanced Critical Revenue Alert Banner -->
         <div class="popup-container critical-banner" id="criticalBanner">
@@ -1651,14 +2075,6 @@
             <button onclick="closeTimePrompt()" style="background: none; border: none; color: #6B7280; cursor: pointer;">
                 I need more time
             </button>
-        </div>
-
-        <!-- Enhanced Home Link -->
-        <div style="position: fixed; top: 120px; left: 24px; z-index: 900; transition: top 0.5s ease;" id="homeButton">
-            <a href="https://primetime.media" style="display: flex; align-items: center; gap: 12px; text-decoration: none; background: rgba(255, 255, 255, 0.95); padding: 12px 24px; border-radius: 30px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; border: 2px solid #E5E7EB; backdrop-filter: blur(10px); cursor: pointer;">
-                <span style="font-size: 24px;">🏠</span>
-                <span style="color: #1E40AF; font-weight: 600; font-size: 14px;">Back to Home</span>
-            </a>
         </div>
 
         <!-- Auto-analyzing Notice (shows when creator parameter is present) -->
@@ -2373,6 +2789,38 @@
     </div>
  
 <script>
+    // Navigation Bar Functions
+    function toggleMobileMenu() {
+        const toggle = document.querySelector('.ptn-mobile-toggle');
+        const menu = document.getElementById('ptnMobileMenu');
+        
+        toggle.classList.toggle('active');
+        menu.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const menu = document.getElementById('ptnMobileMenu');
+        const toggle = document.querySelector('.ptn-mobile-toggle');
+        const navbar = document.querySelector('.ptn-navbar-wrapper');
+        
+        if (navbar && !navbar.contains(event.target) && menu && menu.classList.contains('active')) {
+            menu.classList.remove('active');
+            toggle.classList.remove('active');
+        }
+    });
+
+    // Handle window resize for navigation
+    window.addEventListener('resize', function() {
+        const menu = document.getElementById('ptnMobileMenu');
+        const toggle = document.querySelector('.ptn-mobile-toggle');
+        
+        if (window.innerWidth > 1100 && menu && menu.classList.contains('active')) {
+            menu.classList.remove('active');
+            if (toggle) toggle.classList.remove('active');
+        }
+    });
+
     // Enhanced Global variables
     let usageCount = localStorage.getItem('ytaUsageCount') || 3;
     let lastResetDate = localStorage.getItem('ytaLastReset') || new Date().toISOString();
@@ -2757,7 +3205,7 @@
                     initTimePrompt();
                     initScrollCTA();
                 } else {
-                    // For auto-analyze, show a minimal CTA after results
+                    // For auto-analyze, show a minimal completion banner
                     setTimeout(() => {
                         showAutoAnalyzeComplete();
                     }, 2000);
@@ -2814,6 +3262,42 @@
                     showError(errorMessage);
                 }
             });
+    }
+
+    // Show completion banner for auto-analyze
+    function showAutoAnalyzeComplete() {
+        const banner = document.createElement('div');
+        banner.className = 'auto-completion-banner';
+        banner.style.cssText = `
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3);
+            z-index: 1200;
+            text-align: center;
+            animation: slideInRight 0.5s ease;
+        `;
+        banner.innerHTML = `
+            <div style="font-size: 20px; font-weight: 600; margin-bottom: 8px;">
+                ✅ Auto-Analysis Complete!
+            </div>
+            <div style="font-size: 14px; opacity: 0.9;">
+                Ready to unlock your revenue potential?
+            </div>
+        `;
+        
+        document.body.appendChild(banner);
+        
+        // Auto-hide after 8 seconds
+        setTimeout(() => {
+            banner.style.animation = 'slideInRight 0.5s ease reverse';
+            setTimeout(() => banner.remove(), 500);
+        }, 8000);
     }
 
     // Enhanced popup initialization
@@ -3016,7 +3500,7 @@
     }
 
     function formatCurrency(n) {
-        return '  + Math.round(n).toLocaleString();
+        return ' + Math.round(n).toLocaleString();
     }
 
     function getProgressClass(value, poor, good) {
@@ -3459,3 +3943,25 @@
         document.getElementById('peerComparison').style.display = 'block';
         document.getElementById('aiCard').style.display = 'block';
     }
+
+    // Initialize the application
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check for auto-analyze parameter
+        checkForAutoAnalyze();
+        
+        // Initialize usage tracking
+        checkUsageReset();
+        updateUsageDisplay();
+        updateXPDisplay();
+        
+        // Bind event listeners
+        document.getElementById('runBtn').addEventListener('click', () => ytaRun());
+        document.getElementById('ytaHandle').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                ytaRun();
+            }
+        });
+    });
+</script>
+</body>
+</html>
