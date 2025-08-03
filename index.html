@@ -1307,6 +1307,17 @@
             transition: width 1s ease;
         }
 
+        /* Auto-analyzing specific styles */
+        .auto-analyzing-notice {
+            background: linear-gradient(135deg, #EBF4FF 0%, #DBEAFE 100%);
+            border: 3px solid #3B82F6;
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 32px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
         /* Mobile Responsive Enhancements */
         @media (max-width: 768px) {
             .yta-container {
@@ -1428,6 +1439,11 @@
             
             .scroll-cta {
                 display: none !important;
+            }
+
+            .auto-analyzing-notice {
+                padding: 20px;
+                margin-bottom: 24px;
             }
         }
 
@@ -1645,6 +1661,15 @@
             </a>
         </div>
 
+        <!-- Auto-analyzing Notice (shows when creator parameter is present) -->
+        <div class="auto-analyzing-notice" id="autoAnalyzingNotice" style="display: none;">
+            <div style="font-size: 24px; margin-bottom: 16px;">🚀</div>
+            <h3 style="color: #1E40AF; margin-bottom: 12px;">Auto-Analyzing Creator</h3>
+            <p style="color: #6B7280; margin: 0;">
+                Automatically analyzing <strong id="autoCreatorName"></strong> based on URL parameter...
+            </p>
+        </div>
+
         <!-- Enhanced Header Section -->
         <div class="yta-header">
             <div class="trust-badge">🔥 2,847+ YouTubers earning extra revenue</div>
@@ -1671,7 +1696,7 @@
         </div>
 
         <!-- Enhanced Input Section -->
-        <div class="yta-input-section">
+        <div class="yta-input-section" id="inputSection">
             <h2 style="margin-bottom: 32px; font-size: 32px; color: #1E40AF; font-weight: 700;">
                 Discover Your Hidden Revenue in 30 Seconds
             </h2>
@@ -2357,6 +2382,7 @@
     let hasShownExitIntent = false;
     let timeOnPage = 0;
     let hasShownTimePrompt = false;
+    let autoAnalyzing = false;
 
     // Enhanced Popup Management System
     const popups = {
@@ -2366,6 +2392,33 @@
     };
 
     const popupStates = {};
+
+    // URL Parameter Parser
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        const results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    // Auto-analyze functionality
+    function checkForAutoAnalyze() {
+        const creatorParam = getUrlParameter('creator');
+        if (creatorParam) {
+            autoAnalyzing = true;
+            document.getElementById('autoAnalyzingNotice').style.display = 'block';
+            document.getElementById('autoCreatorName').textContent = creatorParam;
+            document.getElementById('inputSection').style.display = 'none';
+            
+            // Set the creator name in the input field for processing
+            document.getElementById('ytaHandle').value = creatorParam;
+            
+            // Start analysis after a brief delay
+            setTimeout(() => {
+                ytaRun(0, true); // Pass true for auto-analyze mode
+            }, 2000);
+        }
+    }
 
     // Enhanced XP and Level System
     function addXP(amount, reason) {
@@ -2380,7 +2433,9 @@
         }
         
         updateXPDisplay();
-        showXPGain(amount, reason);
+        if (!autoAnalyzing) {
+            showXPGain(amount, reason);
+        }
     }
 
     function updateXPDisplay() {
@@ -2468,7 +2523,7 @@
 
     // Enhanced achievement system
     function unlockAchievement(type, text) {
-        if (!achievements.includes(type)) {
+        if (!achievements.includes(type) && !autoAnalyzing) {
             achievements.push(type);
             localStorage.setItem('ytaAchievements', JSON.stringify(achievements));
             
@@ -2500,6 +2555,8 @@
 
     // Enhanced celebration animation
     function createEnhancedCelebration() {
+        if (autoAnalyzing) return; // Skip celebrations during auto-analyze
+        
         const celebration = document.createElement('div');
         celebration.className = 'celebration';
         
@@ -2537,15 +2594,17 @@
     }
 
     // Enhanced main analysis function
-    function ytaRun(retryCount = 0) {
-        // Check usage limit with enhanced messaging
-        const remaining = 5 - usageCount;
-        if (remaining <= 0) {
-            showError('You\'ve reached your free analysis limit for this month. Upgrade to Premium for unlimited analyses and real-time data!');
-            setTimeout(() => {
-                window.open('https://www.primetime.media/beta-1', '_blank');
-            }, 2000);
-            return;
+    function ytaRun(retryCount = 0, isAutoAnalyze = false) {
+        // Check usage limit with enhanced messaging (skip for auto-analyze)
+        if (!isAutoAnalyze) {
+            const remaining = 5 - usageCount;
+            if (remaining <= 0) {
+                showError('You\'ve reached your free analysis limit for this month. Upgrade to Premium for unlimited analyses and real-time data!');
+                setTimeout(() => {
+                    window.open('https://www.primetime.media/beta-1', '_blank');
+                }, 2000);
+                return;
+            }
         }
         
         let handle = document.getElementById('ytaHandle').value.trim();
@@ -2564,14 +2623,20 @@
         
         localStorage.setItem('lastAnalyzedChannel', handle);
 
-        document.querySelector('.yta-input-section').style.display = 'none';
+        // Hide input section and auto-analyzing notice
+        document.getElementById('inputSection').style.display = 'none';
+        document.getElementById('autoAnalyzingNotice').style.display = 'none';
         document.getElementById('ytaLoading').style.display = 'block';
         
         // Start enhanced loading progress
         const progressInterval = updateLoadingProgress();
         
         // Enhanced loading text
-        const loadingText = retryCount > 0 ? `Retrying enhanced analysis for ${handle.toUpperCase()}...` : `Analyzing ${handle.toUpperCase()} with AI...`;
+        const loadingText = isAutoAnalyze 
+            ? `Auto-analyzing ${handle.toUpperCase()} with AI...`
+            : retryCount > 0 
+                ? `Retrying enhanced analysis for ${handle.toUpperCase()}...` 
+                : `Analyzing ${handle.toUpperCase()} with AI...`;
         document.querySelector('#ytaLoading div:nth-child(2)').textContent = loadingText;
 
         // Enhanced progress messages
@@ -2651,14 +2716,16 @@
                 // Enhanced dashboard update
                 updateDashboard(data);
 
-                // Enhanced usage tracking
-                document.getElementById('usageTracker').style.display = 'block';
-                setTimeout(() => {
-                    document.getElementById('usageTracker').style.display = 'none';
-                }, 10000);
-                usageCount++;
-                localStorage.setItem('ytaUsageCount', usageCount);
-                updateUsageDisplay();
+                // Enhanced usage tracking (skip for auto-analyze)
+                if (!isAutoAnalyze) {
+                    document.getElementById('usageTracker').style.display = 'block';
+                    setTimeout(() => {
+                        document.getElementById('usageTracker').style.display = 'none';
+                    }, 10000);
+                    usageCount++;
+                    localStorage.setItem('ytaUsageCount', usageCount);
+                    updateUsageDisplay();
+                }
 
                 // auto-hide Free Analyses CTA after 10 seconds
                 setTimeout(() => {
@@ -2669,23 +2736,32 @@
                 }, 10000);
     
                 
-                // Enhanced achievement checking
-                if (usageCount === 1) {
-                    unlockAchievement('First Analysis', 'Completed your first channel analysis!');
-                    addXP(25, 'First Analysis');
-                } else if (usageCount === 3) {
-                    unlockAchievement('Getting Serious', 'Analyzed 3 channels - you\'re on fire!');
-                    addXP(50, 'Multiple Analyses');
-                } else if (usageCount === 5) {
-                    unlockAchievement('Power User', 'Used all 5 free analyses!');
-                    addXP(75, 'Power User');
+                // Enhanced achievement checking (skip for auto-analyze)
+                if (!isAutoAnalyze) {
+                    if (usageCount === 1) {
+                        unlockAchievement('First Analysis', 'Completed your first channel analysis!');
+                        addXP(25, 'First Analysis');
+                    } else if (usageCount === 3) {
+                        unlockAchievement('Getting Serious', 'Analyzed 3 channels - you\'re on fire!');
+                        addXP(50, 'Multiple Analyses');
+                    } else if (usageCount === 5) {
+                        unlockAchievement('Power User', 'Used all 5 free analyses!');
+                        addXP(75, 'Power User');
+                    }
                 }
 
-                // Initialize enhanced popups and triggers
-                setTimeout(initializeEnhancedPopups, 1000);
-                initExitIntent();
-                initTimePrompt();
-                initScrollCTA();
+                // Initialize enhanced popups and triggers (skip for auto-analyze)
+                if (!isAutoAnalyze) {
+                    setTimeout(initializeEnhancedPopups, 1000);
+                    initExitIntent();
+                    initTimePrompt();
+                    initScrollCTA();
+                } else {
+                    // For auto-analyze, show a minimal CTA after results
+                    setTimeout(() => {
+                        showAutoAnalyzeComplete();
+                    }, 2000);
+                }
             })
             .catch(error => {
                 clearTimeout(timeoutId);
@@ -2696,12 +2772,26 @@
                 if ((error.name === 'AbortError' || error.message.includes('500')) && retryCount < 2) {
                     console.log('Retrying request...');
                     document.getElementById('loadingProgress').textContent = '🔄 Server is warming up, retrying...';
-                    setTimeout(() => ytaRun(retryCount + 1), 2000);
+                    setTimeout(() => ytaRun(retryCount + 1, isAutoAnalyze), 2000);
                     return;
                 }
                 
                 document.getElementById('ytaLoading').style.display = 'none';
-                document.querySelector('.yta-input-section').style.display = 'block';
+                if (isAutoAnalyze) {
+                    document.getElementById('autoAnalyzingNotice').style.display = 'block';
+                    document.getElementById('autoAnalyzingNotice').innerHTML = `
+                        <div style="font-size: 24px; margin-bottom: 16px;">⚠️</div>
+                        <h3 style="color: #EF4444; margin-bottom: 12px;">Analysis Failed</h3>
+                        <p style="color: #6B7280; margin: 0;">
+                            Could not analyze <strong>${handle}</strong>. Please try again or enter a different creator.
+                        </p>
+                        <button onclick="resetAnalysis()" class="yta-btn-primary" style="margin-top: 16px; padding: 12px 24px;">
+                            Try Again
+                        </button>
+                    `;
+                } else {
+                    document.getElementById('inputSection').style.display = 'block';
+                }
                 
                 let errorMessage = 'Error analyzing channel. ';
                 if (error.name === 'AbortError') {
@@ -2720,7 +2810,9 @@
                     errorMessage += 'Please try again.';
                 }
                 
-                showError(errorMessage);
+                if (!isAutoAnalyze) {
+                    showError(errorMessage);
+                }
             });
     }
 
@@ -2924,7 +3016,7 @@
     }
 
     function formatCurrency(n) {
-        return '$' + Math.round(n).toLocaleString();
+        return '  + Math.round(n).toLocaleString();
     }
 
     function getProgressClass(value, poor, good) {
@@ -3190,14 +3282,21 @@
     }
 
     function resetAnalysis() {
+        autoAnalyzing = false;
         document.querySelector('.yta-results').style.display = 'none';
-        document.querySelector('.yta-input-section').style.display = 'block';
+        document.getElementById('autoAnalyzingNotice').style.display = 'none';
+        document.getElementById('inputSection').style.display = 'block';
         document.getElementById('ytaHandle').value = '';
         document.getElementById('ytaHandle').focus();
         
         // Clear all popups
         document.querySelectorAll('.popup-container').forEach(popup => {
             popup.classList.remove('show', 'peek');
+        });
+        
+        // Remove completion banners
+        document.querySelectorAll('.auto-completion-banner').forEach(banner => {
+            banner.remove();
         });
     }
 
@@ -3360,143 +3459,3 @@
         document.getElementById('peerComparison').style.display = 'block';
         document.getElementById('aiCard').style.display = 'block';
     }
-
-    // Enhanced initialization when page loads
-    document.addEventListener('DOMContentLoaded', function() {
-        checkUsageReset();
-        updateUsageDisplay();
-        updateXPDisplay();
-        
-        // Auto-focus input
-        document.getElementById('ytaHandle').focus();
-        
-        // Adjust home button position based on banner visibility
-        function adjustHomeButtonPosition() {
-            const banner = document.getElementById('criticalBanner');
-            const homeButton = document.getElementById('homeButton');
-            if (banner && banner.classList.contains('show')) {
-                homeButton.style.top = '120px';
-            } else {
-                homeButton.style.top = '24px';
-            }
-        }
-        
-        // Monitor banner changes
-        const bannerObserver = new MutationObserver(adjustHomeButtonPosition);
-        const banner = document.getElementById('criticalBanner');
-        if (banner) {
-            bannerObserver.observe(banner, { attributes: true, attributeFilter: ['class'] });
-        }
-        
-        // Enhanced enter key support
-        document.getElementById('ytaHandle').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                ytaRun();
-            }
-        });
-        
-        // Initialize enhanced tooltips
-        document.querySelectorAll('.tooltip-trigger').forEach(trigger => {
-            trigger.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.02)';
-            });
-            
-            trigger.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
-            });
-        });
-        
-        // Add celebration triggers
-        document.querySelectorAll('.celebration-trigger').forEach(trigger => {
-            trigger.addEventListener('click', function() {
-                createEnhancedCelebration();
-            });
-        });
-        
-        // Enhanced CSS animations
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeOut {
-                from { opacity: 1; }
-                to { opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
-        
-        // Add run button event listener
-        var btn = document.getElementById('runBtn');
-        if (btn) btn.addEventListener('click', ytaRun);
-    });
-
-    // Make ytaRun globally accessible
-    window.ytaRun = ytaRun;
-</script>
-
-<script>
-  (function() {
-    const btn = document.createElement('button');
-    Object.assign(btn.style, {
-      position: 'fixed',
-      bottom: '24px',
-      right: '24px',
-      padding: '10px 18px',
-      background: '#2563EB',
-      color: '#fff',
-      border: 'none',
-      borderRadius: '6px',
-      fontSize: '14px',
-      cursor: 'pointer',
-      zIndex: '10000'
-    });
-    document.body.appendChild(btn);
-      const doc = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-      const blob = new Blob([doc], { type: 'text/html' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'dashboard.html';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }
-  })();
-</script>
-
-
-<!-- Download Button IIFE: place before closing </body> -->
-<script>
-(function() {
-    const btn = document.createElement('button');
-    Object.assign(btn.style, {
-      position: 'fixed',
-      bottom: '24px',
-      right: '24px',
-      padding: '10px 18px',
-      background: '#2563EB',
-      color: '#fff',
-      border: 'none',
-      borderRadius: '6px',
-      fontSize: '14px',
-      cursor: 'pointer',
-      zIndex: '10000'
-    });
-    document.body.appendChild(btn);
-    btn.addEventListener('click', () => {
-      const fullDoc = '<!DOCTYPE html>
-' + document.documentElement.outerHTML;
-      const blob = new Blob([fullDoc], { type: 'text/html' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'dashboard.html';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    });
-})();
-</script>
-
-</body>
-</html>
