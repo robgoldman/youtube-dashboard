@@ -992,10 +992,10 @@
             color: #EF4444;
         }
 
-        /* Enhanced Metric Display with Micro-interactions */
+        /* FIXED: Enhanced Metric Display with Responsive Number Sizing */
         .yta-metric {
             text-align: center;
-            padding: 36px;
+            padding: 36px 20px;
             background: linear-gradient(135deg, #F9FAFB 0%, #FFFFFF 100%);
             border-radius: 16px;
             border: 2px solid #E5E7EB;
@@ -1004,6 +1004,10 @@
             cursor: pointer;
             overflow: hidden;
             margin-bottom: 24px;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .yta-metric::before {
@@ -1029,7 +1033,7 @@
         }
 
         .yta-metric:hover .yta-metric-value {
-            transform: scale(1.1);
+            transform: scale(1.05);
             transition: transform 0.3s ease;
             color: #10B981;
         }
@@ -1041,13 +1045,46 @@
             text-transform: uppercase;
             letter-spacing: 0.8px;
             font-weight: 600;
+            line-height: 1.2;
         }
 
+        /* FIXED: Responsive Number Sizing */
         .yta-metric-value {
-            font-size: 36px;
-            font-weight: 700;
             color: #1E40AF;
             transition: all 0.3s ease;
+            font-weight: 700;
+            line-height: 1.1;
+            word-break: break-all;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            margin: 8px 0;
+        }
+
+        /* Responsive font sizes based on container width and content length */
+        .yta-metric-value {
+            font-size: clamp(24px, 5vw, 36px);
+        }
+
+        /* Special handling for very large numbers */
+        .yta-metric-value.large-number {
+            font-size: clamp(20px, 4vw, 32px);
+        }
+
+        .yta-metric-value.very-large-number {
+            font-size: clamp(18px, 3.5vw, 28px);
+        }
+
+        /* Special styling for the highlighted annual potential card */
+        .yta-metric.featured .yta-metric-value {
+            font-size: clamp(28px, 6vw, 44px);
+        }
+
+        .yta-metric.featured.large-number .yta-metric-value {
+            font-size: clamp(24px, 5vw, 38px);
+        }
+
+        .yta-metric.featured.very-large-number .yta-metric-value {
+            font-size: clamp(20px, 4vw, 32px);
         }
 
         /* Enhanced Optimization Section */
@@ -1276,12 +1313,27 @@
             animation: criticalPulse 3s ease-in-out infinite;
         }
 
+        /* FIXED: Responsive loss amount sizing */
         .loss-amount {
-            font-size: 42px;
             font-weight: 800;
             color: #DC143C;
             margin: 12px 0;
             text-shadow: 0 2px 4px rgba(220, 20, 60, 0.2);
+            line-height: 1.1;
+            word-break: break-all;
+            overflow-wrap: break-word;
+        }
+
+        .loss-amount {
+            font-size: clamp(28px, 7vw, 42px);
+        }
+
+        .loss-amount.large-number {
+            font-size: clamp(24px, 6vw, 36px);
+        }
+
+        .loss-amount.very-large-number {
+            font-size: clamp(20px, 5vw, 32px);
         }
 
         .loss-label {
@@ -1617,7 +1669,7 @@
             animation: pulse 2s ease-in-out infinite;
         }
 
-        /* Mobile Responsive Enhancements */
+        /* FIXED: Mobile Responsive Enhancements for Numbers */
         @media (max-width: 1100px) {
             .ptn-nav-menu {
                 display: none;
@@ -1645,6 +1697,28 @@
                 gap: 20px;
             }
 
+            /* FIXED: Better mobile number handling */
+            .yta-metric {
+                padding: 28px 16px;
+                min-height: 130px;
+            }
+            
+            .yta-metric-value {
+                font-size: clamp(20px, 6vw, 32px) !important;
+                line-height: 1.1;
+                word-break: break-all;
+                overflow-wrap: break-word;
+            }
+            
+            .yta-metric.featured .yta-metric-value {
+                font-size: clamp(24px, 7vw, 36px) !important;
+            }
+            
+            .loss-amount {
+                font-size: clamp(24px, 8vw, 36px) !important;
+                line-height: 1.1;
+            }
+
             .video-thumbnail {
                 width: 100px;
                 height: 56px;
@@ -1664,11 +1738,6 @@
             
             .value-subtitle {
                 font-size: 18px;
-            }
-            
-            .yta-metric {
-                margin-bottom: 20px;
-                padding: 28px;
             }
             
             .ai-recommendation {
@@ -1737,6 +1806,35 @@
             .auto-analyzing-notice {
                 padding: 20px;
                 margin-bottom: 24px;
+            }
+        }
+
+        /* Additional responsive breakpoints for better number handling */
+        @media (max-width: 480px) {
+            .yta-metric-value {
+                font-size: clamp(18px, 7vw, 28px) !important;
+            }
+            
+            .yta-metric.featured .yta-metric-value {
+                font-size: clamp(20px, 8vw, 32px) !important;
+            }
+            
+            .loss-amount {
+                font-size: clamp(20px, 9vw, 32px) !important;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .yta-metric-value {
+                font-size: clamp(16px, 8vw, 24px) !important;
+            }
+            
+            .yta-metric.featured .yta-metric-value {
+                font-size: clamp(18px, 9vw, 28px) !important;
+            }
+            
+            .loss-amount {
+                font-size: clamp(18px, 10vw, 28px) !important;
             }
         }
 
@@ -1937,7 +2035,7 @@
                 <div style="font-size: 18px; color: #EA580C; font-weight: 600; margin-bottom: 12px;">
                     Your Revenue Potential
                 </div>
-                <div style="font-size: 40px; font-weight: 800; color: #F97316; margin-bottom: 16px;" id="potentialRevenue">
+                <div style="font-size: 40px; font-weight: 800; color: #F97316; margin-bottom: 16px; word-break: break-all; line-height: 1.1;" id="potentialRevenue">
                     $0
                 </div>
                 <div class="real-time-indicator" style="margin-bottom: 16px; justify-content: center;">
@@ -1966,7 +2064,7 @@
                     <span style="font-size: 28px;">💎</span>
                     <div>
                         <div style="font-size: 18px; font-weight: 700; color: #F97316;">
-                            Every day without optimization = <span id="dailyLoss">$0</span> lost
+                            Every day without optimization = <span id="dailyLoss" style="word-break: break-all;">$0</span> lost
                         </div>
                         <div style="font-size: 14px; color: #6B7280;">
                             Join creators earning 340% more with optimization
@@ -2272,14 +2370,14 @@
                         </div>
                     </div>
                     
-                    <div class="yta-metric" style="border: 3px solid #10B981; transform: scale(1.05); background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);">
+                    <div class="yta-metric featured" style="border: 3px solid #10B981; transform: scale(1.05); background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);">
                         <div class="yta-metric-label">
                             <span class="tooltip-trigger">
                                 💎 Annual Revenue Potential 💎
                                 <span class="tooltip">Total yearly revenue available through optimization</span>
                             </span>
                         </div>
-                        <div class="yta-metric-value" style="color: #10B981; font-size: 44px;" id="annualPotential">$0</div>
+                        <div class="yta-metric-value" style="color: #10B981;" id="annualPotential">$0</div>
                         <div style="font-size: 14px; color: #059669; margin-top: 12px; font-weight: 600;">
                             START EARNING TODAY
                         </div>
@@ -2315,7 +2413,7 @@
                     <div style="font-size: 18px; color: #92400E; margin-bottom: 12px;">
                         Total Historical Lost Revenue
                     </div>
-                    <div style="font-size: 52px; font-weight: 800; color: #DC143C; text-shadow: 0 2px 8px rgba(220, 20, 60, 0.3);" id="totalLostRevenue">
+                    <div style="font-weight: 800; color: #DC143C; text-shadow: 0 2px 8px rgba(220, 20, 60, 0.3); word-break: break-all; line-height: 1.1; font-size: clamp(32px, 8vw, 52px);" id="totalLostRevenue">
                         $0
                     </div>
                     <div style="font-size: 14px; color: #78350F; margin-top: 12px;">
@@ -2367,7 +2465,7 @@
                 <div class="content-grid">
                     <div style="text-align: center;">
                         <div style="font-size: 36px; margin-bottom: 12px;">👥</div>
-                        <div style="font-size: 28px; font-weight: 700; color: #10B981;" id="subCount">0</div>
+                        <div style="font-size: 28px; font-weight: 700; color: #10B981; word-break: break-all;" id="subCount">0</div>
                         <div style="font-size: 14px; color: #6B7280;">Subscribers</div>
                         <div class="delayed-data-indicator" style="margin-top: 8px; justify-content: center;">
                             ⏱️ 24h
@@ -2375,7 +2473,7 @@
                     </div>
                     <div style="text-align: center;">
                         <div style="font-size: 36px; margin-bottom: 12px;">👁️</div>
-                        <div style="font-size: 28px; font-weight: 700; color: #10B981;" id="viewCount">0</div>
+                        <div style="font-size: 28px; font-weight: 700; color: #10B981; word-break: break-all;" id="viewCount">0</div>
                         <div style="font-size: 14px; color: #6B7280;">Total Views</div>
                         <div class="delayed-data-indicator" style="margin-top: 8px; justify-content: center;">
                             ⏱️ 24h
@@ -2383,7 +2481,7 @@
                     </div>
                     <div style="text-align: center;">
                         <div style="font-size: 36px; margin-bottom: 12px;">🎬</div>
-                        <div style="font-size: 28px; font-weight: 700; color: #10B981;" id="videoCount">0</div>
+                        <div style="font-size: 28px; font-weight: 700; color: #10B981; word-break: break-all;" id="videoCount">0</div>
                         <div style="font-size: 14px; color: #6B7280;">Videos</div>
                         <div class="real-time-indicator" style="margin-top: 8px; justify-content: center;">
                             <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
@@ -2596,7 +2694,7 @@
                             <div style="font-size: 12px; color: #10B981;">Similar channel size</div>
                         </div>
                     </div>
-                    <div style="font-size: 28px; font-weight: 800; color: #10B981; margin-bottom: 12px;">+$127K</div>
+                    <div style="font-size: 28px; font-weight: 800; color: #10B981; margin-bottom: 12px; word-break: break-all;">+$127K</div>
                     <div style="font-size: 14px; color: #047857; line-height: 1.4;">Annual revenue increase after optimization</div>
                     <div class="real-time-indicator" style="margin-top: 12px;">
                         <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
@@ -2612,7 +2710,7 @@
                             <div style="font-size: 12px; color: #10B981;">Your category</div>
                         </div>
                     </div>
-                    <div style="font-size: 28px; font-weight: 800; color: #10B981; margin-bottom: 12px;">+$203K</div>
+                    <div style="font-size: 28px; font-weight: 800; color: #10B981; margin-bottom: 12px; word-break: break-all;">+$203K</div>
                     <div style="font-size: 14px; color: #047857; line-height: 1.4;">First year revenue growth</div>
                     <div class="real-time-indicator" style="margin-top: 12px;">
                         <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
@@ -2628,7 +2726,7 @@
                             <div style="font-size: 12px; color: #10B981;">Started 2 weeks ago</div>
                         </div>
                     </div>
-                    <div style="font-size: 28px; font-weight: 800; color: #10B981; margin-bottom: 12px;">+340%</div>
+                    <div style="font-size: 28px; font-weight: 800; color: #10B981; margin-bottom: 12px; word-break: break-all;">+340%</div>
                     <div style="font-size: 14px; color: #047857; line-height: 1.4;">Revenue increase so far</div>
                     <div class="real-time-indicator" style="margin-top: 12px;">
                         <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
@@ -3041,6 +3139,24 @@
         return progressInterval;
     }
 
+    // Helper function to apply responsive number styling
+    function applyResponsiveNumberStyling(element, value) {
+        if (!element) return;
+        
+        const valueStr = value.toString();
+        const length = valueStr.replace(/[,$]/g, '').length; // Remove formatting characters
+        
+        // Reset classes
+        element.classList.remove('large-number', 'very-large-number');
+        
+        // Apply appropriate class based on length
+        if (length >= 10) {
+            element.classList.add('very-large-number');
+        } else if (length >= 7) {
+            element.classList.add('large-number');
+        }
+    }
+
     // Enhanced main analysis function
     function ytaRun(retryCount = 0, isAutoAnalyze = false) {
         // Check usage limit with enhanced messaging (skip for auto-analyze)
@@ -3364,7 +3480,7 @@
         });
     }
 
-    // Enhanced update dashboard function
+    // Enhanced update dashboard function with fixed number sizing
     function updateDashboard(data) {
         console.log('Updating enhanced dashboard with data:', data);
         
@@ -3376,9 +3492,24 @@
         // Enhanced basic stats update
         const channelHandle = (cd.channel_handle || cd.handle || 'Channel').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         document.getElementById('channelName').textContent = `${channelHandle.toUpperCase()} Analytics`;
-        document.getElementById('subCount').textContent = formatNumber(cd.subscriberCount || 0);
-        document.getElementById('viewCount').textContent = formatNumber(cd.viewCount || 0);
-        document.getElementById('videoCount').textContent = formatNumber(cd.videoCount || 0);
+        
+        // Update subscriber count with responsive styling
+        const subCountEl = document.getElementById('subCount');
+        const formattedSubCount = formatNumber(cd.subscriberCount || 0);
+        subCountEl.textContent = formattedSubCount;
+        applyResponsiveNumberStyling(subCountEl, formattedSubCount);
+        
+        // Update view count with responsive styling
+        const viewCountEl = document.getElementById('viewCount');
+        const formattedViewCount = formatNumber(cd.viewCount || 0);
+        viewCountEl.textContent = formattedViewCount;
+        applyResponsiveNumberStyling(viewCountEl, formattedViewCount);
+        
+        // Update video count with responsive styling
+        const videoCountEl = document.getElementById('videoCount');
+        const formattedVideoCount = formatNumber(cd.videoCount || 0);
+        videoCountEl.textContent = formattedVideoCount;
+        applyResponsiveNumberStyling(videoCountEl, formattedVideoCount);
         
         // Enhanced animations
         const metricCards = document.querySelectorAll('.yta-metric');
@@ -3393,7 +3524,7 @@
             value.classList.add('data-loading');
         });
 
-        // Enhanced revenue calculations
+        // Enhanced revenue calculations with responsive sizing
         const annualRevenue = revenueCalc.annual_totals?.total_additional_revenue || 0;
         const dailyLoss = Math.round(annualRevenue / 365) || 0;
         
@@ -3406,33 +3537,60 @@
         const displayRevenue = annualRevenue || estimatedAnnualRevenue;
         const displayDailyLoss = Math.round(displayRevenue / 365);
         
-        // Enhanced revenue display updates
-        document.getElementById('currentDailyLoss').textContent = formatCurrency(displayDailyLoss) + '/day';
-        document.getElementById('criticalLostRevenue').textContent = formatCurrency(displayDailyLoss);
-        document.getElementById('dailyLoss').textContent = formatCurrency(displayDailyLoss);
+        // Enhanced revenue display updates with responsive sizing
+        const currentDailyLossEl = document.getElementById('currentDailyLoss');
+        const formattedDailyLoss = formatCurrency(displayDailyLoss) + '/day';
+        currentDailyLossEl.textContent = formattedDailyLoss;
+        applyResponsiveNumberStyling(currentDailyLossEl, formattedDailyLoss);
         
-        // Update dynamic loss elements
+        const criticalLostEl = document.getElementById('criticalLostRevenue');
+        const formattedCriticalLoss = formatCurrency(displayDailyLoss);
+        criticalLostEl.textContent = formattedCriticalLoss;
+        applyResponsiveNumberStyling(criticalLostEl, formattedCriticalLoss);
+        
+        const dailyLossEl = document.getElementById('dailyLoss');
+        dailyLossEl.textContent = formattedCriticalLoss;
+        applyResponsiveNumberStyling(dailyLossEl, formattedCriticalLoss);
+        
+        // Update dynamic loss elements with responsive sizing
         const dynamicLossElements = document.querySelectorAll('.daily-loss-dynamic');
         dynamicLossElements.forEach(el => {
-            el.textContent = formatCurrency(displayDailyLoss) + '/day';
+            const formattedLoss = formatCurrency(displayDailyLoss) + '/day';
+            el.textContent = formattedLoss;
+            applyResponsiveNumberStyling(el, formattedLoss);
         });
 
-        // Enhanced revenue potential updates
+        // Enhanced revenue potential updates with responsive sizing
         const perVideoRevenue = revenueCalc.per_video_impact?.total_gain || Math.round(displayRevenue / (cd.videoCount || 100));
-        document.getElementById('revPerVideo').textContent = formatCurrency(perVideoRevenue);
+        const revPerVideoEl = document.getElementById('revPerVideo');
+        const formattedPerVideo = formatCurrency(perVideoRevenue);
+        revPerVideoEl.textContent = formattedPerVideo;
+        applyResponsiveNumberStyling(revPerVideoEl, formattedPerVideo);
         
         const currentSubs = cd.subscriberCount || 0;
         const additionalSubs = Math.round(currentSubs * 0.28);
-        document.getElementById('monthlyPotential').textContent = formatNumber(additionalSubs);
+        const monthlyPotentialEl = document.getElementById('monthlyPotential');
+        const formattedAdditionalSubs = formatNumber(additionalSubs);
+        monthlyPotentialEl.textContent = formattedAdditionalSubs;
+        applyResponsiveNumberStyling(monthlyPotentialEl, formattedAdditionalSubs);
         
-        document.getElementById('annualPotential').textContent = formatCurrency(displayRevenue);
-        document.getElementById('potentialRevenue').textContent = formatCurrency(displayRevenue);
+        const annualPotentialEl = document.getElementById('annualPotential');
+        const formattedAnnualRevenue = formatCurrency(displayRevenue);
+        annualPotentialEl.textContent = formattedAnnualRevenue;
+        applyResponsiveNumberStyling(annualPotentialEl, formattedAnnualRevenue);
+        
+        const potentialRevenueEl = document.getElementById('potentialRevenue');
+        potentialRevenueEl.textContent = formattedAnnualRevenue;
+        applyResponsiveNumberStyling(potentialRevenueEl, formattedAnnualRevenue);
 
-        // Enhanced historical loss
+        // Enhanced historical loss with responsive sizing
         const totalLostRevenue = historicalData.summary_metrics?.total_revenue_lost || 
                                 historicalData.calculation_details?.base_lost_opportunity || 0;
         const channelAge = historicalData.calculation_details?.channel_age_years || 0;
-        document.getElementById('totalLostRevenue').textContent = formatCurrency(totalLostRevenue);
+        const totalLostEl = document.getElementById('totalLostRevenue');
+        const formattedTotalLost = formatCurrency(totalLostRevenue);
+        totalLostEl.textContent = formattedTotalLost;
+        applyResponsiveNumberStyling(totalLostEl, formattedTotalLost);
         document.getElementById('channelAge').textContent = channelAge.toFixed(1) + ' years';
 
         // Enhanced performance metrics
@@ -3500,7 +3658,7 @@
     }
 
     function formatCurrency(n) {
-        return '$' + Math.round(n).toLocaleString();
+        return ' + Math.round(n).toLocaleString();
     }
 
     function getProgressClass(value, poor, good) {
@@ -3891,7 +4049,7 @@
     function initExitIntent() {
         document.addEventListener('mouseout', function(e) {
             if (e.clientY <= 0 && !hasShownExitIntent && document.querySelector('.yta-results').style.display === 'block') {
-                const revenue = document.getElementById('annualPotential').textContent.replace(/,/g, '');
+                const revenue = document.getElementById('annualPotential').textContent.replace(/[,$]/g, '');
                 const monthlyRevenue = Math.round(parseInt(revenue) / 12);
                 document.querySelector('.exit-revenue').textContent = monthlyRevenue.toLocaleString();
                 
