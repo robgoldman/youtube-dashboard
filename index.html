@@ -3238,7 +3238,7 @@
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), timeoutDuration);
 
-        fetch('https://primetime-media-youtube-analyzer-941974948417.us-central1.run.app/analyze?handle=' + encodeURIComponent(handle) + '&detailed=true', {
+        fetch('https://primetime-media-youtube-analyzer-941974948417.us-central1.run.app/analyze?handle=' + encodeURIComponent(handle), {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
