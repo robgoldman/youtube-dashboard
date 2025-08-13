@@ -3,169 +3,1027 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrimeTime Media - YouTube Channel Analytics</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>YouTube Channel Analytics - Unlock Your Revenue Potential | PrimeTime Media</title>
+    <meta name="theme-color" content="#1E40AF">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <main class="dashboard-container" role="main" aria-label="YouTube Channel Dashboard">
-        <section class="channel-section" aria-labelledby="channel-heading">
-            <h2 id="channel-heading" class="section-title">Channel Performance Overview</h2>
+    <!-- Navigation Bar -->
+    <div class="ptn-navbar-wrapper">
+        <nav class="ptn-navbar">
+            <!-- Logo Section -->
+            <div class="ptn-logo-section">
+                <a href="https://primetime.media" class="ptn-logo">
+                    <div class="ptn-logo-text">
+                        <span class="ptn-logo-prime">PrimeTime</span>
+                        <span class="ptn-logo-media">Media</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <ul class="ptn-nav-menu">
+                <li class="ptn-nav-item">
+                    <a href="/" class="ptn-nav-link">Home</a>
+                </li>
+                <li class="ptn-nav-item">
+                    <a href="https://dashboard.primetime.media" class="ptn-nav-link active">Revenue Calculator</a>
+                </li>
+                <li class="ptn-nav-item">
+                    <a href="/blog" class="ptn-nav-link">Blog</a>
+                </li>
+                <li class="ptn-nav-item">
+                    <a href="/faq1" class="ptn-nav-link">FAQ</a>
+                </li>
+                <li class="ptn-nav-item">
+                    <a href="/pricing1" class="ptn-nav-link">Pricing</a>
+                </li>
+                <li class="ptn-nav-item">
+                    <a href="/about-1" class="ptn-nav-link">About</a>
+                </li>
+                <li class="ptn-nav-item">
+                    <a href="/compare1" class="ptn-nav-link">Compare Us</a>
+                </li>
+                <li class="ptn-nav-item">
+                    <a href="/contact1" class="ptn-nav-link">Contact</a>
+                </li>
+                <li class="ptn-nav-item">
+                    <a href="#" class="ptn-nav-link">
+                        Legal
+                        <span class="ptn-dropdown-arrow">▼</span>
+                    </a>
+                    <div class="ptn-dropdown">
+                        <a href="/privacy-policy" class="ptn-dropdown-item">Privacy Policy</a>
+                        <a href="/terms-of-use" class="ptn-dropdown-item">Terms of Use</a>
+                        <a href="/terms-of-service" class="ptn-dropdown-item">Terms of Service</a>
+                        <a href="/earnings-disclaimer" class="ptn-dropdown-item">Earnings Disclaimer</a>
+                        <a href="/cookie-policy" class="ptn-dropdown-item">Cookie Policy</a>
+                        <a href="/anti-spam" class="ptn-dropdown-item">Anti-Spam</a>
+                        <a href="/security-and-data-protection" class="ptn-dropdown-item">Security & Data Policy</a>
+                        <a href="/data-processing-agreement" class="ptn-dropdown-item">Data Processing Agreement</a>
+                        <a href="/subprocessor-list" class="ptn-dropdown-item">Subprocessor List</a>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- Right Section -->
+            <div class="ptn-nav-right">
+                <!-- Auth Buttons -->
+                <div class="ptn-auth-buttons">
+                    <a href="/beta-1" class="ptn-btn-primary">
+                        Sign Up
+                        <span style="font-size: 16px;">→</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="ptn-mobile-toggle" onclick="toggleMobileMenu()">
+                    <div class="ptn-hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div class="ptn-mobile-menu" id="ptnMobileMenu">
+            <ul class="ptn-mobile-nav">
+                <li class="ptn-mobile-nav-item">
+                    <a href="/" class="ptn-mobile-nav-link">Home</a>
+                </li>
+                <li class="ptn-mobile-nav-item">
+                    <a href="https://dashboard.primetime.media" class="ptn-mobile-nav-link">Revenue Calculator</a>
+                </li>
+                <li class="ptn-mobile-nav-item">
+                    <a href="/blog" class="ptn-mobile-nav-link">Blog</a>
+                </li>
+                <li class="ptn-mobile-nav-item">
+                    <a href="/faq1" class="ptn-mobile-nav-link">FAQ</a>
+                </li>
+                <li class="ptn-mobile-nav-item">
+                    <a href="/pricing1" class="ptn-mobile-nav-link">Pricing</a>
+                </li>
+                <li class="ptn-mobile-nav-item">
+                    <a href="/about-1" class="ptn-mobile-nav-link">About</a>
+                </li>
+                <li class="ptn-mobile-nav-item">
+                    <a href="/compare1" class="ptn-mobile-nav-link">Compare Us</a>
+                </li>
+                <li class="ptn-mobile-nav-item">
+                    <a href="/contact1" class="ptn-mobile-nav-link">Contact</a>
+                </li>
+                <li class="ptn-mobile-nav-item">
+                    <a href="#" class="ptn-mobile-nav-link">Legal</a>
+                    <div class="ptn-mobile-dropdown">
+                        <a href="/privacy-policy" class="ptn-dropdown-item">Privacy Policy</a>
+                        <a href="/terms-of-use" class="ptn-dropdown-item">Terms of Use</a>
+                        <a href="/terms-of-service" class="ptn-dropdown-item">Terms of Service</a>
+                        <a href="/earnings-disclaimer" class="ptn-dropdown-item">Earnings Disclaimer</a>
+                        <a href="/cookie-policy" class="ptn-dropdown-item">Cookie Policy</a>
+                        <a href="/anti-spam" class="ptn-dropdown-item">Anti-Spam</a>
+                        <a href="/security-and-data-protection" class="ptn-dropdown-item">Security & Data Policy</a>
+                        <a href="/data-processing-agreement" class="ptn-dropdown-item">Data Processing Agreement</a>
+                        <a href="/subprocessor-list" class="ptn-dropdown-item">Subprocessor List</a>
+                    </div>
+                </li>
+            </ul>
             
-            <div class="channel-grid">
-                <!-- Primary Channel Card -->
-                <article class="channel-card channel-card--featured" role="region" aria-labelledby="primary-channel">
-                    <div class="channel-header">
-                        <div class="channel-identity">
-                            <div class="channel-thumbnail-wrapper">
-                                <img src="channel-avatar.jpg" alt="Channel thumbnail" class="channel-thumbnail" width="88" height="88">
-                                <div class="channel-status-indicator" aria-label="Channel is active"></div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <a href="/beta-1" class="ptn-btn-primary" style="width: 100%; justify-content: center;">
+                    Sign Up
+                    <span style="font-size: 16px;">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="yta-container">
+        <!-- Enhanced Critical Revenue Alert Banner -->
+        <div class="popup-container critical-banner" id="criticalBanner">
+            <button class="minimize-btn" onclick="minimizePopup('criticalBanner')">−</button>
+            <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 280px;">
+                    <div style="font-size: 14px; font-weight: 600; opacity: 0.95; margin-bottom: 6px;">
+                        🚨 CRITICAL: DAILY REVENUE LOSS DETECTED
+                    </div>
+                    <div style="font-size: 32px; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                        You're losing <span id="criticalLostRevenue">$0</span>/day
+                    </div>
+                    <div style="font-size: 14px; opacity: 0.9;">
+                        Every unoptimized day = lost revenue opportunity
+                    </div>
+                    <div class="real-time-indicator" style="margin-top: 12px;">
+                        <span style="width: 8px; height: 8px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                        LIVE: Revenue decreasing by the hour
+                    </div>
+                </div>
+                <button class="yta-btn-primary" onclick="window.open('https://www.primetime.media/beta-1', '_blank')" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border: 2px solid white; box-shadow: 0 4px 6px rgba(255, 255, 255, 0.25); font-size: 18px;">
+                    🛑 Stop Losing Money Now →
+                </button>
+            </div>
+        </div>
+
+        <!-- Enhanced Revenue Opportunity Sidebar -->
+        <div class="popup-container revenue-opportunity" id="revenueOpportunity">
+            <button class="minimize-btn" onclick="minimizePopup('revenueOpportunity')" style="color: #F97316;">−</button>
+            <div style="text-align: center;">
+                <div style="font-size: 24px; margin-bottom: 20px;">💰</div>
+                <div style="font-size: 18px; color: #EA580C; font-weight: 600; margin-bottom: 12px;">
+                    Your Revenue Potential
+                </div>
+                <div style="font-size: 40px; font-weight: 800; color: #F97316; margin-bottom: 16px; word-break: break-all; line-height: 1.1;" id="potentialRevenue">
+                    $0
+                </div>
+                <div class="real-time-indicator" style="margin-bottom: 16px; justify-content: center;">
+                    <span style="width: 8px; height: 8px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                    Updated in real-time
+                </div>
+                <div style="font-size: 14px; color: #92400E; line-height: 1.5; margin-bottom: 24px;">
+                    Available through channel optimization. Start earning this revenue immediately.
+                </div>
+                <button class="yta-btn-primary" style="width: 100%; font-size: 16px;" onclick="window.open('https://www.primetime.media/beta-1', '_blank')">
+                    🚀 Unlock My Revenue →
+                </button>
+                <div style="font-size: 12px; color: #10B981; margin-top: 16px;">
+                    ✓ Start earning instantly<br>
+                    ✓ We only profit when you do<br>
+                    ✓ 340% average revenue increase
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Bottom CTA -->
+        <div class="popup-container bottom-cta" id="bottomCTA">
+            <button class="minimize-btn" onclick="minimizePopup('bottomCTA')" style="color: #6B7280;">−</button>
+            <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <span style="font-size: 28px;">💎</span>
+                    <div>
+                        <div style="font-size: 18px; font-weight: 700; color: #F97316;">
+                            Every day without optimization = <span id="dailyLoss" style="word-break: break-all;">$0</span> lost
+                        </div>
+                        <div style="font-size: 14px; color: #6B7280;">
+                            Join creators earning 340% more with optimization
+                        </div>
+                        <div class="delayed-data-indicator" style="margin-top: 8px;">
+                            ⏱️ Your current data is 24 hours old
+                        </div>
+                    </div>
+                </div>
+                <button class="yta-btn-primary" onclick="window.open('https://www.primetime.media/beta-1', '_blank')" style="font-size: 18px;">
+                    💰 Start Optimizing Now →
+                </button>
+            </div>
+        </div>
+
+        <!-- Enhanced Exit Intent Popup -->
+        <div class="exit-intent-popup" id="exitIntentPopup">
+            <div class="exit-intent-content">
+                <div style="font-size: 56px; margin-bottom: 24px;">🚨</div>
+                <h2 style="color: #DC143C; margin-bottom: 20px; font-size: 32px;">
+                    Wait! Your Revenue Analysis is Ready
+                </h2>
+                <p style="color: #6B7280; margin-bottom: 28px; font-size: 18px; line-height: 1.5;">
+                    Don't leave without seeing how much revenue you're losing! We've identified 
+                    <strong style="color: #F97316;">$<span class="exit-revenue">0</span>/month</strong> 
+                    in optimization opportunities.
+                </p>
+                <div class="level-indicator" style="justify-content: center; margin-bottom: 24px;">
+                    <span>🏆</span>
+                    Level 1 Analysis Complete
+                </div>
+                <button class="yta-btn-primary" style="font-size: 20px; padding: 20px 40px; width: 100%;" onclick="closeExitIntent()">
+                    📊 Show Me My Revenue Potential
+                </button>
+                <button onclick="closeExitIntent()" style="background: none; border: none; color: #6B7280; margin-top: 16px; cursor: pointer; text-decoration: underline;">
+                    No thanks, I'll leave money on the table
+                </button>
+            </div>
+        </div>
+
+        <!-- Enhanced Usage Tracker -->
+        <div class="usage-tracker" id="usageTracker" style="display: none;">
+            <div style="font-size: 13px; color: #6B7280; font-weight: 600; text-transform: uppercase;">
+                Free Analyses Remaining
+            </div>
+            <div style="font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 6px 0;">
+                <span id="usageCount">2</span> of 5
+            </div>
+            <div class="usage-progress">
+                <div class="usage-progress-fill" id="usageProgressFill" style="width: 60%;"></div>
+            </div>
+            <div style="font-size: 11px; color: #F97316; margin-top: 12px; font-weight: 600;">
+                Resets in 29 days
+            </div>
+            <div class="level-indicator" style="margin-top: 12px; font-size: 12px; padding: 6px 12px;">
+                <span>⚡</span>
+                Analyst Level: Beginner
+            </div>
+        </div>
+
+        <!-- Enhanced Achievement Popup -->
+        <div class="achievement-popup" id="achievementPopup">
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                <div style="font-size: 36px;">🏆</div>
+                <div>
+                    <div style="font-weight: 700; font-size: 18px; color: #1a1a1a;">Achievement Unlocked!</div>
+                    <div style="font-size: 14px; color: #6B7280;" id="achievementText">First Analysis Complete</div>
+                </div>
+            </div>
+            <div style="margin: 16px 0;">
+                <div class="xp-bar">
+                    <div class="xp-fill" style="width: 25%;"></div>
+                </div>
+                <div style="font-size: 12px; color: #6B7280; text-align: center;">+50 XP • Next level: 200 XP</div>
+            </div>
+            <div id="achievementBadges" style="margin-top: 16px;">
+                <!-- Badges will be added dynamically -->
+            </div>
+        </div>
+
+        <!-- Enhanced Scroll-triggered CTA -->
+        <div class="scroll-cta" id="scrollCTA" onclick="window.open('https://www.primetime.media/beta-1', '_blank')">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 24px;">💰</span>
+                <div>
+                    <div style="font-weight: 600; font-size: 16px;">Unlock Premium Insights</div>
+                    <div style="font-size: 12px; opacity: 0.9;">Real-time data + AI optimization</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Time-based Prompt -->
+        <div class="time-prompt" id="timePrompt">
+            <div style="font-size: 36px; margin-bottom: 20px;">⏰</div>
+            <h3 style="color: #F97316; margin-bottom: 16px;">You've Been Here 2 Minutes!</h3>
+            <p style="color: #6B7280; margin-bottom: 24px; line-height: 1.5;">
+                Most successful creators make their decision by now. Ready to unlock your revenue potential?
+            </p>
+            <div class="level-indicator" style="justify-content: center; margin-bottom: 24px;">
+                <span>🎯</span>
+                Time-sensitive offer active
+            </div>
+            <button class="yta-btn-primary" style="width: 100%; margin-bottom: 16px; font-size: 18px;" onclick="window.open('https://www.primetime.media/beta-1', '_blank'); closeTimePrompt();">
+                Yes, Show Me How →
+            </button>
+            <button onclick="closeTimePrompt()" style="background: none; border: none; color: #6B7280; cursor: pointer;">
+                I need more time
+            </button>
+        </div>
+
+        <!-- Auto-analyzing Notice (shows when creator parameter is present) -->
+        <div class="auto-analyzing-notice" id="autoAnalyzingNotice" style="display: none;">
+            <div style="font-size: 24px; margin-bottom: 16px;">🚀</div>
+            <h3 style="color: #1E40AF; margin-bottom: 12px;">Auto-Analyzing Creator</h3>
+            <p style="color: #6B7280; margin: 0;">
+                Automatically analyzing <strong id="autoCreatorName"></strong> based on URL parameter...
+            </p>
+        </div>
+
+        <!-- Enhanced Header Section -->
+        <div class="yta-header">
+            <div class="trust-badge">🔥 2,847+ YouTubers earning extra revenue</div>
+            <div class="value-headline">Creators Using Our Optimization Services Earn 340% More</div>
+            <div class="value-subtitle">
+                Join 10,000+ creators who've unlocked their hidden revenue potential
+            </div>
+            
+            <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin: 48px 0;">
+                <div style="width: 60px; height: 42px; background: #ff0000; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);">
+                    <div style="width: 0; height: 0; border-left: 16px solid #fff; border-top: 10px solid transparent; border-bottom: 10px solid transparent; margin-left: 3px;"></div>
+                </div>
+                <span style="font-size: 32px; font-weight: 700; color: #1a1a1a;">YouTube</span>
+                <span style="color:#6B7280;font-weight:300; font-size: 18px;">Channel Analytics</span>
+                <span style="margin-left:50px; font-size: 28px; font-weight: 700;">
+                    <span style="color: #F97316;">PrimeTime</span> <span style="color: #1E40AF;">Media</span>
+                </span>
+            </div>
+            
+            <div class="real-time-indicator" style="margin-top: 24px;">
+                <span style="width: 8px; height: 8px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                Live revenue tracking enabled
+            </div>
+        </div>
+
+        <!-- Enhanced Input Section -->
+        <div class="yta-input-section" id="inputSection">
+            <h2 style="margin-bottom: 32px; font-size: 32px; color: #1E40AF; font-weight: 700;">
+                Discover Your Hidden Revenue in 30 Seconds
+            </h2>
+            <input type="text" id="ytaHandle" class="yta-input" placeholder="@channelname or youtube.com/@channel">
+            <div style="font-size: 13px; color: #6B7280; margin-top: 12px;">
+                Try a popular channel like <strong>@mkbhd</strong> or <strong>@pewdiepie</strong> to test
+            </div>
+            <br>
+            <button id="runBtn" class="yta-btn-primary celebration-trigger" style="font-size: 20px; padding: 20px 48px;">
+                🚀 Calculate My Revenue Potential
+            </button>
+            <div style="margin-top: 20px; font-size: 14px; color: #10B981;">
+                ✓ Free analysis ✓ See your optimization opportunities ✓ Start earning today
+            </div>
+            
+            <div class="level-indicator" style="margin-top: 24px; justify-content: center;">
+                <span>🎯</span>
+                Level 1: Basic Analysis (Free)
+            </div>
+        </div>
+
+        <!-- Enhanced Loading State -->
+        <div class="yta-loading" id="ytaLoading">
+            <div class="yta-spinner"></div>
+            <div style="font-size: 28px; font-weight: 700; margin-bottom: 16px; color: #1E40AF;">
+                Analyzing revenue potential...
+            </div>
+            <div style="color:#6B7280;font-size:18px;" id="loadingSubtext">
+                Calculating optimization opportunities
+            </div>
+            <div style="margin-top: 32px; font-size: 14px; color: #6B7280;" id="loadingProgress">
+                🔍 Scanning channel data...
+            </div>
+            
+            <div style="margin-top: 24px;">
+                <div class="xp-bar" style="width: 300px; margin: 0 auto;">
+                    <div class="xp-fill" id="loadingBar" style="width: 0%;"></div>
+                </div>
+                <div style="font-size: 12px; color: #6B7280; margin-top: 8px;">Analysis Progress</div>
+            </div>
+        </div>
+
+        <!-- Enhanced Results Section -->
+        <div class="yta-results">
+            <!-- Enhanced Streak Tracker -->
+            <div class="streak-tracker">
+                <h3 style="margin: 0 0 12px 0; font-size: 20px; color: #1E40AF;">
+                    🔥 Your Analysis Streak
+                </h3>
+                <p style="font-size: 14px; color: #6B7280; margin-bottom: 20px;">
+                    Keep analyzing daily to unlock premium features!
+                </p>
+                <div class="streak-days">
+                    <div class="streak-day active" title="Monday">M</div>
+                    <div class="streak-day active" title="Tuesday">T</div>
+                    <div class="streak-day current" title="Wednesday - Today">W</div>
+                    <div class="streak-day" title="Thursday">T</div>
+                    <div class="streak-day" title="Friday">F</div>
+                    <div class="streak-day" title="Saturday">S</div>
+                    <div class="streak-day" title="Sunday">S</div>
+                </div>
+                <div style="margin-top: 20px; font-size: 14px; color: #10B981; font-weight: 600;">
+                    3 Day Streak! 🎉 Keep it going!
+                </div>
+                <div style="margin-top: 16px;">
+                    <div class="xp-bar">
+                        <div class="xp-fill" style="width: 43%;"></div>
+                    </div>
+                    <div style="font-size: 12px; color: #6B7280; margin-top: 8px;">Next milestone: 7 day streak (+100 XP)</div>
+                </div>
+            </div>
+
+            <!-- Enhanced Progress Tracker -->
+            <div class="progress-tracker">
+                <h3 style="margin: 0 0 20px 0; font-size: 20px; color: #1a1a1a;">
+                    Your Analysis Progress
+                </h3>
+                <div class="level-indicator" style="margin-bottom: 20px;">
+                    <span>⚡</span>
+                    Current Level: Revenue Analyst (Level 1)
+                </div>
+                <div class="progress-item">
+                    <div class="progress-circle completed">✓</div>
+                    <div>
+                        <div style="font-weight: 600;">Channel Data Analyzed</div>
+                        <div style="font-size: 12px; color: #6B7280;">Basic metrics collected • +25 XP</div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-circle current">2</div>
+                    <div>
+                        <div style="font-weight: 600;">Revenue Potential Calculated</div>
+                        <div style="font-size: 12px; color: #6B7280;">Optimization opportunities identified • +50 XP</div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-circle">3</div>
+                    <div>
+                        <div style="font-weight: 600;">Unlock Premium Insights</div>
+                        <div style="font-size: 12px; color: #6B7280;">Get your custom optimization plan • +100 XP</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Daily Loss Counter -->
+            <div class="daily-loss-counter">
+                <div class="loss-label">💸 You're Currently Losing</div>
+                <div class="loss-amount" id="currentDailyLoss">$0/day</div>
+                <div class="loss-label">Without Channel Optimization</div>
+                <div class="real-time-indicator" style="margin-top: 16px; justify-content: center;">
+                    <span style="width: 8px; height: 8px; background: #DC143C; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                    LIVE: Loss continues every hour
+                </div>
+            </div>
+
+            <!-- Enhanced Optimization Revenue Calculator -->
+            <div class="yta-card">
+                <div class="optimization-header">
+                    <div class="optimization-title">
+                        💰 Your Revenue Potential Through Optimization
+                    </div>
+                    <div class="optimization-subtitle">
+                        This is the additional revenue you can earn by optimizing your channel.<br>
+                        Every day without optimization = money left on the table.
+                    </div>
+                    <div class="real-time-indicator" style="margin-top: 16px; justify-content: center;">
+                        <span style="width: 8px; height: 8px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                        Updated with real-time market data
+                    </div>
+                </div>
+                
+                <div class="content-grid">
+                    <div class="yta-metric">
+                        <div class="yta-metric-label">
+                            <span class="tooltip-trigger">
+                                Revenue Per Video
+                                <span class="tooltip">Additional earnings for each optimized video</span>
+                            </span>
+                        </div>
+                        <div class="yta-metric-value" style="color: #F97316;" id="revPerVideo">$0</div>
+                        <div class="real-time-indicator" style="margin-top: 12px; justify-content: center;">
+                            <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                            Live
+                        </div>
+                    </div>
+                    
+                    <div class="yta-metric">
+                        <div class="yta-metric-label">
+                            <span class="tooltip-trigger">
+                                Additional Subscribers
+                                <span class="tooltip">Estimated new subscriber growth with optimization</span>
+                            </span>
+                        </div>
+                        <div class="yta-metric-value" style="color: #F97316;" id="monthlyPotential">0</div>
+                        <div class="delayed-data-indicator" style="margin-top: 12px; justify-content: center;">
+                            ⏱️ 24h old
+                        </div>
+                    </div>
+                    
+                    <div class="yta-metric featured" style="border: 3px solid #10B981; transform: scale(1.05); background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);">
+                        <div class="yta-metric-label">
+                            <span class="tooltip-trigger">
+                                💎 Annual Revenue Potential 💎
+                                <span class="tooltip">Total yearly revenue available through optimization</span>
+                            </span>
+                        </div>
+                        <div class="yta-metric-value" style="color: #10B981;" id="annualPotential">$0</div>
+                        <div style="font-size: 14px; color: #059669; margin-top: 12px; font-weight: 600;">
+                            START EARNING TODAY
+                        </div>
+                        <div class="real-time-indicator" style="margin-top: 12px; justify-content: center;">
+                            <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                            Real-time calculation
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <button class="yta-btn-primary celebration-trigger" style="font-size: 20px; padding: 20px 48px;" onclick="window.open('https://www.primetime.media/beta-1', '_blank')">
+                        🚀 Unlock This Revenue Now →
+                    </button>
+                    <div style="margin-top: 20px; font-size: 14px; color: #10B981;">
+                        ✓ Revenue share model ✓ We only profit when you do ✓ Real-time optimization
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Historical Loss Section -->
+            <div class="yta-card">
+                <div class="loss-explanation">
+                    <h4>📊 What is Historical Lost Revenue?</h4>
+                    <p>
+                        This represents the total revenue you've missed since your channel started due to lack of optimization. 
+                        It's calculated based on the performance gap between optimized and non-optimized content. 
+                        While you can't recover past losses, you can prevent future losses by optimizing now.
+                    </p>
+                </div>
+                
+                <div style="text-align: center; padding: 32px; background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); border-radius: 12px; border: 3px solid #F59E0B;">
+                    <div style="font-size: 18px; color: #92400E; margin-bottom: 12px;">
+                        Total Historical Lost Revenue
+                    </div>
+                    <div style="font-weight: 800; color: #DC143C; text-shadow: 0 2px 8px rgba(220, 20, 60, 0.3); word-break: break-all; line-height: 1.1; font-size: clamp(32px, 8vw, 52px);" id="totalLostRevenue">
+                        $0
+                    </div>
+                    <div style="font-size: 14px; color: #78350F; margin-top: 12px;">
+                        Since channel started • <span id="channelAge">0 years</span>
+                    </div>
+                    <div class="delayed-data-indicator" style="margin-top: 16px; justify-content: center;">
+                        ⏱️ Historical data (24h delayed)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Channel Overview -->
+            <div class="yta-card">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 36px; flex-wrap: wrap; gap: 20px;">
+                    <div style="display: flex; align-items: center; gap: 24px;">
+                        <img id="channelImage" src="" alt="Channel" style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid #3B82F6; display: none; box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);" onerror="this.style.display='none'">
+                        <div>
+                            <h2 style="margin: 0 0 8px 0; font-size: 32px; color: #1E40AF;" id="channelName">
+                                Channel Analytics
+                            </h2>
+                            <div class="level-indicator">
+                                <span>📊</span>
+                                Analysis Level: Complete
                             </div>
-                            <div class="channel-info">
-                                <h3 id="primary-channel" class="channel-name">
-                                    TechReview Pro
-                                    <svg class="verification-badge" aria-label="Verified channel" width="16" height="16" viewBox="0 0 24 24">
-                                        <path fill="#1E40AF" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
-                                    </svg>
-                                </h3>
-                                <div class="channel-metadata">
-                                    <span class="metadata-item">Technology</span>
-                                    <span class="metadata-separator">•</span>
-                                    <span class="metadata-item">Joined Feb 2019</span>
+                        </div>
+                    </div>
+                    <button onclick="resetAnalysis()" class="yta-btn-secondary" style="font-size: 14px; padding: 12px 24px;">
+                        🔄 New Analysis
+                    </button>
+                </div>
+                
+                <!-- Enhanced Data Freshness Indicator -->
+                <div style="text-align: center; margin-bottom: 32px;">
+                    <div class="delayed-data-indicator">
+                        <span style="font-size: 16px;">⏱️</span>
+                        <span id="dataFreshness">Data from 24 hours ago</span>
+                        <span style="font-size: 10px;">• Upgrade for real-time</span>
+                    </div>
+                    <div style="margin-top: 12px; font-size: 13px; color: #6B7280;">
+                        Real-time data shows 15% higher accuracy
+                    </div>
+                </div>
+                
+                <!-- Enhanced Channel Awards -->
+                <div id="channelAwards">
+                    <!-- Awards will be populated dynamically -->
+                </div>
+                
+                <div class="content-grid">
+                    <div style="text-align: center;">
+                        <div style="font-size: 36px; margin-bottom: 12px;">👥</div>
+                        <div style="font-size: 28px; font-weight: 700; color: #10B981; word-break: break-all;" id="subCount">0</div>
+                        <div style="font-size: 14px; color: #6B7280;">Subscribers</div>
+                        <div class="delayed-data-indicator" style="margin-top: 8px; justify-content: center;">
+                            ⏱️ 24h
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 36px; margin-bottom: 12px;">👁️</div>
+                        <div style="font-size: 28px; font-weight: 700; color: #10B981; word-break: break-all;" id="viewCount">0</div>
+                        <div style="font-size: 14px; color: #6B7280;">Total Views</div>
+                        <div class="delayed-data-indicator" style="margin-top: 8px; justify-content: center;">
+                            ⏱️ 24h
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 36px; margin-bottom: 12px;">🎬</div>
+                        <div style="font-size: 28px; font-weight: 700; color: #10B981; word-break: break-all;" id="videoCount">0</div>
+                        <div style="font-size: 14px; color: #6B7280;">Videos</div>
+                        <div class="real-time-indicator" style="margin-top: 8px; justify-content: center;">
+                            <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                            Live
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Channel Health Score -->
+            <div class="yta-card">
+                <h3 style="margin: 0 0 36px 0; font-size: 22px;">
+                    <span class="tooltip-trigger">
+                        🎯 Channel Health Score
+                        <span class="tooltip">Overall performance rating based on engagement, growth, and optimization</span>
+                    </span>
+                </h3>
+                
+                <div style="text-align: center; padding: 32px;">
+                    <div class="yta-score-circle" id="scoreCircle" style="--score-deg: 0deg; --score-color: #EF4444">
+                        <div class="yta-score-inner">
+                            <div style="font-size: 36px; font-weight: 700; color: #1E40AF;" id="scoreValue">0.0</div>
+                            <div style="font-size: 12px; color: #6B7280;">out of 10</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 24px; padding: 24px; background: linear-gradient(135deg, #F9FAFB 0%, #FFFFFF 100%); border-radius: 12px;">
+                        <div id="healthStatus" style="font-size: 18px; font-weight: 700;">Loading...</div>
+                        <div id="healthDesc" style="font-size: 14px; color: #6B7280; margin-top: 8px; line-height: 1.4;">Analyzing channel health...</div>
+                        <div class="delayed-data-indicator" style="margin-top: 12px; justify-content: center;">
+                            ⏱️ Score based on 24h old data
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Performance Overview -->
+            <div class="yta-card">
+                <h3 style="margin: 0 0 36px 0; font-size: 22px;">
+                    📊 Performance Overview
+                </h3>
+                
+                <div id="chartBars">
+                    <div style="height: 0%;" title="Engagement Rate"></div>
+                    <div style="height: 0%;" title="Like Rate"></div>
+                    <div style="height: 0%;" title="Comment Rate"></div>
+                    <div style="height: 0%;" title="Relative Views"></div>
+                    <div style="height: 0%;" title="Sentiment"></div>
+                </div>
+                
+                <!-- Enhanced Column Labels -->
+                <div style="display: flex; justify-content: center; gap: 32px; margin-top: 16px; font-size: 12px; font-weight: 600; color: #1a1a1a;">
+                    <div style="width: 70px; text-align: center;">
+                        <span style="font-size: 20px;">👥</span><br>Engage
+                    </div>
+                    <div style="width: 70px; text-align: center;">
+                        <span style="font-size: 20px;">👍</span><br>Likes
+                    </div>
+                    <div style="width: 70px; text-align: center;">
+                        <span style="font-size: 20px;">💬</span><br>Comments
+                    </div>
+                    <div style="width: 70px; text-align: center;">
+                        <span style="font-size: 20px;">👀</span><br>Views
+                    </div>
+                    <div style="width: 70px; text-align: center;">
+                        <span style="font-size: 20px;">😊</span><br>Sentiment
+                    </div>
+                </div>
+                
+                <!-- Enhanced Metric Values -->
+                <div style="display: flex; justify-content: center; gap: 32px; margin-top: 12px; font-size: 12px; font-weight: 700;">
+                    <div style="width: 70px; text-align: center;" id="engChart">0%</div>
+                    <div style="width: 70px; text-align: center;" id="likeChart">0%</div>
+                    <div style="width: 70px; text-align: center;" id="commentChart">0%</div>
+                    <div style="width: 70px; text-align: center;" id="relativeChart">0x</div>
+                    <div style="width: 70px; text-align: center;" id="sentimentChart">0%</div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 24px;">
+                    <div class="delayed-data-indicator">
+                        ⏱️ Performance data updated 24 hours ago
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Recent Videos Section -->
+            <div class="yta-card" style="display: none;" id="videosCard">
+                <h3 style="margin: 0 0 36px 0; font-size: 22px;">
+                    🎬 Recent Videos Analysis
+                </h3>
+                
+                <div id="videosList">
+                    <!-- Videos will be populated here -->
+                </div>
+                
+                <div style="text-align: center; margin-top: 32px; padding: 32px; background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); border-radius: 12px; border: 3px solid #F59E0B;">
+                    <div style="font-size: 18px; color: #92400E; font-weight: 600;">
+                        ⚠️ <span id="unoptimizedCount">0</span> of your recent videos are not optimized
+                    </div>
+                    <div style="font-size: 14px; color: #78350F; margin-top: 12px;">
+                        Each unoptimized video = lost revenue opportunity
+                    </div>
+                    <div class="delayed-data-indicator" style="margin-top: 16px; justify-content: center;">
+                        ⏱️ Video data updated 24 hours ago
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Performance Metrics -->
+            <div class="yta-card" style="display: none;" id="metricsCard">
+                <h3 style="margin: 0 0 36px 0; font-size: 22px;">
+                    🎯 Detailed Performance Metrics
+                </h3>
+                
+                <div style="margin-bottom: 32px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                        <span class="tooltip-trigger">
+                            Engagement Rate
+                            <span class="tooltip">Percentage of viewers who interact with your content</span>
+                        </span>
+                        <span style="font-weight: 700;" id="engagementRate">0%</span>
+                    </div>
+                    <div class="yta-progress">
+                        <div class="yta-progress-fill" id="engagementBar" style="width: 0%;"></div>
+                    </div>
+                    <div class="delayed-data-indicator" style="margin-top: 8px;">
+                        ⏱️ 24h delayed
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 32px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                        <span class="tooltip-trigger">
+                            Like Rate
+                            <span class="tooltip">Percentage of viewers who like your videos</span>
+                        </span>
+                        <span style="font-weight: 700;" id="likeRate">0%</span>
+                    </div>
+                    <div class="yta-progress">
+                        <div class="yta-progress-fill" id="likeBar" style="width: 0%;"></div>
+                    </div>
+                    <div class="delayed-data-indicator" style="margin-top: 8px;">
+                        ⏱️ 24h delayed
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 32px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                        <span class="tooltip-trigger">
+                            Comment Rate
+                            <span class="tooltip">Percentage of viewers who comment</span>
+                        </span>
+                        <span style="font-weight: 700;" id="commentRate">0%</span>
+                    </div>
+                    <div class="yta-progress">
+                        <div class="yta-progress-fill" id="commentBar" style="width: 0%;"></div>
+                    </div>
+                    <div class="delayed-data-indicator" style="margin-top: 8px;">
+                        ⏱️ 24h delayed
+                    </div>
+                </div>
+                
+                <!-- Enhanced Locked Premium Metrics -->
+                <div style="position: relative; margin-top: 48px;">
+                    <div class="locked-content">
+                        <div style="margin-bottom: 32px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                <span>Viral Potential Score</span>
+                                <span style="font-weight: 700;">8.5/10</span>
+                            </div>
+                            <div class="yta-progress">
+                                <div class="yta-progress-fill" style="width: 85%; background: linear-gradient(90deg, #F97316 0%, #EA580C 100%);"></div>
+                            </div>
+                            <div class="real-time-indicator" style="margin-top: 8px;">
+                                <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                                Real-time
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                <span>Revenue Optimization Score</span>
+                                <span style="font-weight: 700;">9.2/10</span>
+                            </div>
+                            <div class="yta-progress">
+                                <div class="yta-progress-fill" style="width: 92%; background: linear-gradient(90deg, #10B981 0%, #059669 100%);"></div>
+                            </div>
+                            <div class="real-time-indicator" style="margin-top: 8px;">
+                                <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                                Live calculation
+                            </div>
+                        </div>
+                    </div>
+                    <div class="unlock-overlay">
+                        <div class="lock-icon">🔒</div>
+                        <div style="font-weight: 600; margin-bottom: 12px; font-size: 18px;">Premium Metrics</div>
+                        <div style="font-size: 14px; color: #6B7280; margin-bottom: 20px;">Get real-time data + AI insights</div>
+                        <button class="yta-btn-primary" style="font-size: 16px; padding: 12px 24px;" onclick="window.open('https://www.primetime.media/beta-1', '_blank')">
+                            Unlock All Metrics →
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Social Proof -->
+            <div class="social-proof-grid" style="display: none;" id="socialProofGrid">
+                <div class="social-proof-card">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #10B981 0%, #059669 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">JM</div>
+                        <div>
+                            <div style="font-weight: 600; color: #1a1a1a; font-size: 16px;">@JohnMusic</div>
+                            <div style="font-size: 12px; color: #10B981;">Similar channel size</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 28px; font-weight: 800; color: #10B981; margin-bottom: 12px; word-break: break-all;">+$127K</div>
+                    <div style="font-size: 14px; color: #047857; line-height: 1.4;">Annual revenue increase after optimization</div>
+                    <div class="real-time-indicator" style="margin-top: 12px;">
+                        <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                        Verified result
+                    </div>
+                </div>
+                
+                <div class="social-proof-card">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #10B981 0%, #059669 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">SL</div>
+                        <div>
+                            <div style="font-weight: 600; color: #1a1a1a; font-size: 16px;">@SarahLifestyle</div>
+                            <div style="font-size: 12px; color: #10B981;">Your category</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 28px; font-weight: 800; color: #10B981; margin-bottom: 12px; word-break: break-all;">+$203K</div>
+                    <div style="font-size: 14px; color: #047857; line-height: 1.4;">First year revenue growth</div>
+                    <div class="real-time-indicator" style="margin-top: 12px;">
+                        <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                        Recent success
+                    </div>
+                </div>
+                
+                <div class="social-proof-card">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #10B981 0%, #059669 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">TR</div>
+                        <div>
+                            <div style="font-weight: 600; color: #1a1a1a; font-size: 16px;">@TechReviews</div>
+                            <div style="font-size: 12px; color: #10B981;">Started 2 weeks ago</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 28px; font-weight: 800; color: #10B981; margin-bottom: 12px; word-break: break-all;">+340%</div>
+                    <div style="font-size: 14px; color: #047857; line-height: 1.4;">Revenue increase so far</div>
+                    <div class="real-time-indicator" style="margin-top: 12px;">
+                        <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                        Live tracking
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Peer Comparison -->
+            <div class="peer-comparison" id="peerComparison" style="display: none;">
+                <h4 style="margin: 0 0 24px 0; font-size: 20px; color: #1a1a1a; display: flex; align-items: center; gap: 12px;">
+                    <span style="font-size: 24px;">📊</span>
+                    How You Compare to Similar Channels
+                </h4>
+                <div class="peer-metric">
+                    <span style="display: flex; align-items: center; gap: 12px;">
+                        <span style="font-size: 20px;">💰</span>
+                        Revenue per 1K views
+                    </span>
+                    <div class="peer-metric-value peer-worse" id="revenueComparison">-67% below average</div>
+                </div>
+                <div class="peer-metric">
+                    <span style="display: flex; align-items: center; gap: 12px;">
+                        <span style="font-size: 20px;">📈</span>
+                        Engagement optimization
+                    </span>
+                    <div class="peer-metric-value peer-worse" id="engagementComparison">-43% below peers</div>
+                </div>
+                <div class="peer-metric">
+                    <span style="display: flex; align-items: center; gap: 12px;">
+                        <span style="font-size: 20px;">🎯</span>
+                        Content optimization
+                    </span>
+                    <div class="peer-metric-value peer-worse" id="contentComparison">-52% below potential</div>
+                </div>
+                <div style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%); padding: 24px; border-radius: 12px; border-left: 4px solid #EF4444; margin-top: 24px;">
+                    <div style="font-weight: 600; color: #DC143C; margin-bottom: 12px;">⚠️ Critical Gap Alert</div>
+                    <div style="font-size: 14px; color: #991B1B; line-height: 1.4;">You're significantly underperforming compared to similar channels. This gap represents lost revenue opportunities.</div>
+                    <div class="delayed-data-indicator" style="margin-top: 12px;">
+                        ⏱️ Comparison data 24 hours old
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced AI Analysis -->
+            <div class="yta-card" style="display: none;" id="aiCard">
+                <h3 style="margin: 0 0 36px 0; font-size: 22px;">
+                    🤖 AI-Powered Revenue Analysis
+                </h3>
+                
+                <!-- First AI recommendation visible -->
+                <div class="ai-section unlocked" style="border: 3px solid #EF4444; border-radius: 16px; padding: 6px; background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%); animation: criticalPulse 2s ease-in-out infinite;">
+                    <div class="ai-recommendation">
+                        <div class="ai-icon">🚨</div>
+                        <div class="ai-content">
+                            <h4 style="color: #DC143C; font-size: 20px;">Critical: Your Videos Need Optimization NOW</h4>
+                            <p style="color: #991B1B; font-weight: 500; font-size: 16px;">Your videos are missing 7 critical optimization elements costing you <span class="daily-loss-dynamic" style="font-weight: 800; font-size: 20px;">$0/day</span>. Simple fixes: ✗ End screens missing (89% of videos) ✗ No cards ✗ Wrong tags ✗ Poor descriptions ✗ No chapters ✗ Missing subtitles ✗ Bad metadata. These fixes would TRIPLE your views TODAY.</p>
+                            <div class="real-time-indicator" style="margin: 16px 0;">
+                                <span style="width: 8px; height: 8px; background: #DC143C; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                                URGENT: Revenue loss accelerating
+                            </div>
+                            <div style="margin-top: 24px;">
+                                <button class="yta-btn-primary celebration-trigger" style="background: linear-gradient(135deg, #DC143C 0%, #B91C1C 100%); font-size: 16px; padding: 16px 32px; border: 2px solid #DC143C; box-shadow: 0 4px 6px rgba(220, 20, 60, 0.25);" 
+                                        onmouseover="this.style.background='linear-gradient(135deg, #B91C1C 0%, #991B1B 100%)'; this.style.borderColor='#B91C1C'" 
+                                        onmouseout="this.style.background='linear-gradient(135deg, #DC143C 0%, #B91C1C 100%)'; this.style.borderColor='#DC143C'"
+                                        onclick="window.open('https://www.primetime.media/beta-1', '_blank')">
+                                    🚀 Fix My Videos Now →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Remaining AI recommendations with enhanced blur -->
+                <div style="position: relative; margin-top: 32px; background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%); border-radius: 16px; padding: 6px; box-shadow: 0 8px 30px rgba(249, 115, 22, 0.2); overflow: hidden;">
+                    <div class="locked-content">
+                        <div class="ai-section">
+                            <div class="ai-recommendation">
+                                <div class="ai-icon">🔍</div>
+                                <div class="ai-content">
+                                    <h4>Title Optimization Formula</h4>
+                                    <p>Your titles are underperforming by 45%. Using power words like "Ultimate," "Secret," and numbers in brackets [2024] could triple your CTR. We've identified 12 title templates that work specifically in your niche.</p>
+                                    <div class="real-time-indicator" style="margin-top: 12px;">
+                                        <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                                        AI-powered suggestions
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="ai-recommendation">
+                                <div class="ai-icon">🎯</div>
+                                <div class="ai-content">
+                                    <h4>Thumbnail Optimization Strategy</h4>
+                                    <p>Your thumbnails could generate 2.5x more clicks with dynamic elements. Studies show channels using motion blur and contrasting colors see 340% higher CTR. We recommend A/B testing emotional expressions and adding subtle animation cues.</p>
+                                    <div class="real-time-indicator" style="margin-top: 12px;">
+                                        <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                                        Real-time A/B testing
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="ai-recommendation">
+                                <div class="ai-icon">📊</div>
+                                <div class="ai-content">
+                                    <h4>Upload Timing Analysis</h4>
+                                    <p>Based on your audience demographics, you're missing peak engagement windows. Shifting uploads to Tuesday/Thursday at 2 PM EST could increase initial views by 67%. Your current schedule misses 40% of your active subscriber base.</p>
+                                    <div class="real-time-indicator" style="margin-top: 12px;">
+                                        <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                                        Live audience tracking
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="ai-recommendation">
+                                <div class="ai-icon">🔍</div>
+                                <div class="ai-content">
+                                    <h4>Competitor Gap Analysis</h4>
+                                    <p>You're missing 3 key content categories that your competitors use to drive 80% of their revenue. These gaps represent $127K in annual revenue you're leaving on the table.</p>
+                                    <div class="real-time-indicator" style="margin-top: 12px;">
+                                        <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                                        Market analysis updated hourly
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="ai-recommendation">
+                                <div class="ai-icon">💰</div>
+                                <div class="ai-content">
+                                    <h4>Sponsorship Opportunity Calculator</h4>
+                                    <p>Based on your metrics, you're undercharging sponsors by 73%. Your true sponsorship value is $4,500 per video, not the $1,200 average you're likely getting. We've identified 15 brands perfect for your audience.</p>
+                                    <div class="real-time-indicator" style="margin-top: 12px;">
+                                        <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite;"></span>
+                                        Brand matching algorithm
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <button class="channel-action-menu" aria-label="More actions">
-                            <svg width="20" height="20" viewBox="0 0 24 24">
-                                <path fill="#6B7280" d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-                            </svg>
+                    </div>
+                    <div class="unlock-overlay">
+                        <div class="lock-icon">🔒</div>
+                        <div style="font-size: 20px; font-weight: 600; margin-bottom: 16px;">
+                            Unlock 5 More AI Insights
+                        </div>
+                        <div style="color: #6B7280; margin-bottom: 24px; font-size: 14px;">
+                            Get your complete optimization roadmap with real-time updates
+                        </div>
+                        <div class="level-indicator" style="margin-bottom: 20px; justify-content: center;">
+                            <span>🎯</span>
+                            Upgrade to Level 2: AI Analyst
+                        </div>
+                        <button class="yta-btn-primary celebration-trigger" style="animation: glowPulse 2s ease-in-out infinite; font-size: 18px; padding: 16px 32px;" onclick="window.open('https://www.primetime.media/beta-1', '_blank')">
+                            🚀 Unlock All AI Insights →
                         </button>
                     </div>
-                    
-                    <div class="channel-metrics">
-                        <div class="metric-card metric-card--primary">
-                            <div class="metric-value" data-animate-counter="247500">0</div>
-                            <div class="metric-label">Subscribers</div>
-                            <div class="metric-change positive">
-                                <svg class="trend-arrow" width="12" height="12" viewBox="0 0 24 24">
-                                    <path fill="#10B981" d="M7 14l5-5 5 5H7z"/>
-                                </svg>
-                                <span>+15.2K this month</span>
-                            </div>
-                        </div>
-                        
-                        <div class="metric-card">
-                            <div class="metric-value" data-animate-counter="3247">0</div>
-                            <div class="metric-label">Videos</div>
-                            <div class="metric-subtext">~3 per week</div>
-                        </div>
-                        
-                        <div class="metric-card">
-                            <div class="metric-value">45.7M</div>
-                            <div class="metric-label">Total Views</div>
-                            <div class="metric-change positive">
-                                <svg class="trend-arrow" width="12" height="12" viewBox="0 0 24 24">
-                                    <path fill="#10B981" d="M7 14l5-5 5 5H7z"/>
-                                </svg>
-                                <span>+2.3M</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="channel-achievements">
-                        <div class="achievement-badge achievement-badge--gold" data-tooltip="100K+ Subscribers">
-                            <svg width="24" height="24" viewBox="0 0 24 24">
-                                <path fill="#F59E0B" d="M12 2l2.4 7.4H22l-6.2 4.5L18.2 22 12 17.5 5.8 22l2.4-8.1L2 9.4h7.6L12 2z"/>
-                            </svg>
-                            <span>Gold Creator</span>
-                        </div>
-                        <div class="achievement-badge" data-tooltip="30-day upload streak">
-                            <svg width="24" height="24" viewBox="0 0 24 24">
-                                <path fill="#10B981" d="M13 3v6h8V3m-8 18h8V11h-8m-10 0h8V3H3v8z"/>
-                            </svg>
-                            <span>Consistent</span>
-                        </div>
-                        <div class="achievement-badge" data-tooltip="High engagement rate">
-                            <svg width="24" height="24" viewBox="0 0 24 24">
-                                <path fill="#3B82F6" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-                            </svg>
-                            <span>Engaged</span>
-                        </div>
-                    </div>
-                    
-                    <div class="channel-description">
-                        <p class="description-text">
-                            Creating in-depth technology reviews and tutorials to help you make informed decisions. 
-                            New videos every Monday, Wednesday, and Friday covering the latest gadgets, software...
-                            <button class="read-more-btn" aria-expanded="false">Read more</button>
-                        </p>
-                    </div>
-                    
-                    <div class="channel-actions">
-                        <button class="btn btn--primary">
-                            <svg width="16" height="16" viewBox="0 0 24 24">
-                                <path fill="white" d="M16 13h-3V3h-2v10H8l4 4 4-4z"/>
-                            </svg>
-                            Analyze Channel
-                        </button>
-                        <button class="btn btn--secondary">Compare</button>
-                        <button class="btn btn--secondary">Export Data</button>
-                    </div>
-                    
-                    <div class="growth-indicator">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 75%"></div>
-                        </div>
-                        <div class="progress-label">
-                            <span>75% to next milestone</span>
-                            <span class="milestone-target">250K subscribers</span>
-                        </div>
-                    </div>
-                </article>
-                
-                <!-- Secondary Channel Cards -->
-                <article class="channel-card channel-card--compact">
-                    <div class="compact-header">
-                        <img src="channel2.jpg" alt="Gaming Channel" class="compact-thumbnail" width="48" height="48">
-                        <div class="compact-info">
-                            <h4 class="compact-name">Gaming Central</h4>
-                            <div class="compact-subscribers">142K subscribers</div>
-                        </div>
-                        <div class="compact-trend positive">+8.2%</div>
-                    </div>
-                    <div class="compact-metrics">
-                        <span class="compact-metric">847 videos</span>
-                        <span class="compact-metric">23.4M views</span>
-                    </div>
-                    <button class="btn btn--small btn--orange">Quick View</button>
-                </article>
-                
-                <article class="channel-card channel-card--compact">
-                    <div class="compact-header">
-                        <img src="channel3.jpg" alt="Cooking Channel" class="compact-thumbnail" width="48" height="48">
-                        <div class="compact-info">
-                            <h4 class="compact-name">Tasty Kitchen</h4>
-                            <div class="compact-subscribers">89.3K subscribers</div>
-                        </div>
-                        <div class="compact-trend negative">-2.1%</div>
-                    </div>
-                    <div class="compact-metrics">
-                        <span class="compact-metric">523 videos</span>
-                        <span class="compact-metric">15.7M views</span>
-                    </div>
-                    <button class="btn btn--small btn--orange">Quick View</button>
-                </article>
+                </div>
             </div>
-        </section>
-        
-        <!-- Mobile-optimized floating action button -->
-        <button class="fab" aria-label="Add new channel">
-            <svg width="24" height="24" viewBox="0 0 24 24">
-                <path fill="white" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-            </svg>
-        </button>
-    </main>
-    
+        </div>
+    </div>
+ 
     <script src="script.js"></script>
 </body>
 </html>
